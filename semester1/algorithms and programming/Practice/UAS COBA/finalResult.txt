@@ -1,0 +1,2 @@
+No.  Nim       Nama      Nilai     Huruf
+1    001       afina     63        C    

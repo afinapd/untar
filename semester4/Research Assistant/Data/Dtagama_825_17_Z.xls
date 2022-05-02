@@ -1,0 +1,123 @@
+<style>.textmode{mso-number-format:\@;}</style><table border='1'><tr valign='middle'><td rowspan='1' align='center' valign='middle'>No</td><td rowspan='1' align='center' valign='middle'>NPM</td><td rowspan='1' align='center' valign='middle'>Nama</td><td rowspan='1' align='center' valign='middle'>Program Studi</td><td rowspan='1' align='center' valign='middle'>Agama</td><td rowspan='1' align='center' valign='middle'>HP</td><td rowspan='1' align='center' valign='middle'>Email</td><div>
+	<table cellspacing="0" rules="all" border="1" style="border-collapse:collapse;">
+		<tr class="textmode">
+			<td align="left">1</td><td align="left">825170001</td><td align="left">NICO PRATAMIN                                                                                       </td><td align="left">SISTEM INFORMASI         </td><td align="left">BUDHA</td><td align="left">081272911614   </td><td align="left">nico.825170001@stu.untar.ac.id                    </td>
+		</tr><tr class="textmode">
+			<td align="left">2</td><td align="left">825170002</td><td align="left">JUAN VALERIAN                                                                                       </td><td align="left">SISTEM INFORMASI         </td><td align="left">PROTESTAN</td><td align="left">085156183669   </td><td align="left">juan.825170002@stu.untar.ac.id                    </td>
+		</tr><tr class="textmode">
+			<td align="left">3</td><td align="left">825170003</td><td align="left">ADZIE FATHARONI                                                                                     </td><td align="left">SISTEM INFORMASI         </td><td align="left">ISLAM</td><td align="left">081290629079   </td><td align="left">adzie.825170003@stu.untar.ac.id                   </td>
+		</tr><tr class="textmode">
+			<td align="left">4</td><td align="left">825170004</td><td align="left">RABIATUL MAULIDYA                                                                                   </td><td align="left">SISTEM INFORMASI         </td><td align="left">ISLAM</td><td align="left">089603309081   </td><td align="left">rabiatul.825170004@stu.untar.ac.id                </td>
+		</tr><tr class="textmode">
+			<td align="left">5</td><td align="left">825170005</td><td align="left">KEVIN STEVANUS                                                                                      </td><td align="left">SISTEM INFORMASI         </td><td align="left">PROTESTAN</td><td align="left">082114774118   </td><td align="left">kevin.825170005@stu.untar.ac.id                   </td>
+		</tr><tr class="textmode">
+			<td align="left">6</td><td align="left">825170006</td><td align="left">MUHAMMAD ALFARIZI                                                                                   </td><td align="left">SISTEM INFORMASI         </td><td align="left">ISLAM</td><td align="left">083807077059   </td><td align="left">muhammad.825170006@stu.untar.ac.id                </td>
+		</tr><tr class="textmode">
+			<td align="left">7</td><td align="left">825170007</td><td align="left">DWI RETNO FIBRIYANTI                                                                                </td><td align="left">SISTEM INFORMASI         </td><td align="left">KATOLIK</td><td align="left">083873227889   </td><td align="left">dwi.825170007@stu.untar.ac.id                     </td>
+		</tr><tr class="textmode">
+			<td align="left">8</td><td align="left">825170008</td><td align="left">HEBREW FRANSA                                                                                       </td><td align="left">SISTEM INFORMASI         </td><td align="left">PROTESTAN</td><td align="left">089608078947   </td><td align="left">hebrew.825170008@stu.untar.ac.id                  </td>
+		</tr><tr class="textmode">
+			<td align="left">9</td><td align="left">825170009</td><td align="left">ALEXANDER LEONARDO KURNIAWAN                                                                        </td><td align="left">SISTEM INFORMASI         </td><td align="left">KATOLIK</td><td align="left">081519528974   </td><td align="left">alexander.825170009@stu.untar.ac.id               </td>
+		</tr><tr class="textmode">
+			<td align="left">10</td><td align="left">825170010</td><td align="left">TANIA CHEN                                                                                          </td><td align="left">SISTEM INFORMASI         </td><td align="left">BUDHA</td><td align="left">081254776770   </td><td align="left">tania.825170010@stu.untar.ac.id                   </td>
+		</tr><tr class="textmode">
+			<td align="left">11</td><td align="left">825170011</td><td align="left">LIDYA ASTUTI                                                                                        </td><td align="left">SISTEM INFORMASI         </td><td align="left">BUDHA</td><td align="left">081282963793   </td><td align="left">lidya.825170011@stu.untar.ac.id                   </td>
+		</tr><tr class="textmode">
+			<td align="left">12</td><td align="left">825170012</td><td align="left">RITZCO PUTRA                                                                                        </td><td align="left">SISTEM INFORMASI         </td><td align="left">ISLAM</td><td align="left">085311111263   </td><td align="left">ritzco.825170012@stu.untar.ac.id                  </td>
+		</tr><tr class="textmode">
+			<td align="left">13</td><td align="left">825170013</td><td align="left">JOSEPH CHRISTIAN LONGKENG                                                                           </td><td align="left">SISTEM INFORMASI         </td><td align="left">ISLAM</td><td align="left">               </td><td align="left">joseph.825170013@stu.untar.ac.id                  </td>
+		</tr><tr class="textmode">
+			<td align="left">14</td><td align="left">825170014</td><td align="left">JIMMY SANTOSO                                                                                       </td><td align="left">SISTEM INFORMASI         </td><td align="left">KATOLIK</td><td align="left">081919446739   </td><td align="left">jimmy.825170014@stu.untar.ac.id                   </td>
+		</tr><tr class="textmode">
+			<td align="left">15</td><td align="left">825170015</td><td align="left">ELIEZER                                                                                             </td><td align="left">SISTEM INFORMASI         </td><td align="left">PROTESTAN</td><td align="left">085770744984   </td><td align="left">eliezer.825170015@stu.untar.ac.id                 </td>
+		</tr><tr class="textmode">
+			<td align="left">16</td><td align="left">825170016</td><td align="left">BRIAN JAYO SIDHARTA                                                                                 </td><td align="left">SISTEM INFORMASI         </td><td align="left">BUDHA</td><td align="left">081293382170   </td><td align="left">brian.825170016@stu.untar.ac.id                   </td>
+		</tr><tr class="textmode">
+			<td align="left">17</td><td align="left">825170017</td><td align="left">DARWIN RAHARJA                                                                                      </td><td align="left">SISTEM INFORMASI         </td><td align="left">PROTESTAN</td><td align="left">082298733514   </td><td align="left">darwin.825170017@stu.untar.ac.id                  </td>
+		</tr><tr class="textmode">
+			<td align="left">18</td><td align="left">825170018</td><td align="left">HARTANTO KUSNARDI                                                                                   </td><td align="left">SISTEM INFORMASI         </td><td align="left">BUDHA</td><td align="left">083879583780   </td><td align="left">hartanto.825170018@stu.untar.ac.id                </td>
+		</tr><tr class="textmode">
+			<td align="left">19</td><td align="left">825170019</td><td align="left">MARIO                                                                                               </td><td align="left">SISTEM INFORMASI         </td><td align="left">BUDHA</td><td align="left">083806956788   </td><td align="left">mario.825170019@stu.untar.ac.id                   </td>
+		</tr><tr class="textmode">
+			<td align="left">20</td><td align="left">825170020</td><td align="left">RONNY SUTANTO                                                                                       </td><td align="left">SISTEM INFORMASI         </td><td align="left">BUDHA</td><td align="left">087885137754   </td><td align="left">ronny.825170020@stu.untar.ac.id                   </td>
+		</tr><tr class="textmode">
+			<td align="left">21</td><td align="left">825170021</td><td align="left">REYNALDI                                                                                            </td><td align="left">SISTEM INFORMASI         </td><td align="left">BUDHA</td><td align="left">085219397359   </td><td align="left">reinaldi.825170021@stu.untar.ac.id                </td>
+		</tr><tr class="textmode">
+			<td align="left">22</td><td align="left">825170022</td><td align="left">ARI SUSANTO                                                                                         </td><td align="left">SISTEM INFORMASI         </td><td align="left">BUDHA</td><td align="left">082276995372   </td><td align="left">ari.825170022@stu.untar.ac.id                     </td>
+		</tr><tr class="textmode">
+			<td align="left">23</td><td align="left">825170023</td><td align="left">DEVIN CHEN                                                                                          </td><td align="left">SISTEM INFORMASI         </td><td align="left">BUDHA</td><td align="left">083876552442   </td><td align="left">devin.825170023@stu.untar.ac.id                   </td>
+		</tr><tr class="textmode">
+			<td align="left">24</td><td align="left">825170024</td><td align="left">SYAFA SAPHIRA                                                                                       </td><td align="left">SISTEM INFORMASI         </td><td align="left">ISLAM</td><td align="left">081288909460   </td><td align="left">syafa.825170024@stu.untar.ac.id                   </td>
+		</tr><tr class="textmode">
+			<td align="left">25</td><td align="left">825170025</td><td align="left">GABRIELLA JUSTINE                                                                                   </td><td align="left">SISTEM INFORMASI         </td><td align="left">KATOLIK</td><td align="left">085886668767   </td><td align="left">gabriella.825170025@stu.untar.ac.id               </td>
+		</tr><tr class="textmode">
+			<td align="left">26</td><td align="left">825170026</td><td align="left">ONGKY LIANANDO                                                                                      </td><td align="left">SISTEM INFORMASI         </td><td align="left">BUDHA</td><td align="left">082170611272   </td><td align="left">ongky.825170026@stu.untar.ac.id                   </td>
+		</tr><tr class="textmode">
+			<td align="left">27</td><td align="left">825170027</td><td align="left">JOVIAN                                                                                              </td><td align="left">SISTEM INFORMASI         </td><td align="left">BUDHA</td><td align="left">089688346193   </td><td align="left">jovian.825170027@stu.untar.ac.id                  </td>
+		</tr><tr class="textmode">
+			<td align="left">28</td><td align="left">825170028</td><td align="left">NELSON ANTONIO                                                                                      </td><td align="left">SISTEM INFORMASI         </td><td align="left">BUDHA</td><td align="left">085210416192   </td><td align="left">nelson.825170028@stu.untar.ac.id                  </td>
+		</tr><tr class="textmode">
+			<td align="left">29</td><td align="left">825170029</td><td align="left">DIRA AMANDA SABRINA                                                                                 </td><td align="left">SISTEM INFORMASI         </td><td align="left">ISLAM</td><td align="left">087883639609   </td><td align="left">dira.825170029@stu.untar.ac.id                    </td>
+		</tr><tr class="textmode">
+			<td align="left">30</td><td align="left">825170030</td><td align="left">IVAN MALEAKHI SUHENDRA                                                                              </td><td align="left">SISTEM INFORMASI         </td><td align="left">PROTESTAN</td><td align="left">081283330243   </td><td align="left">ivan.825170030@stu.untar.ac.id                    </td>
+		</tr><tr class="textmode">
+			<td align="left">31</td><td align="left">825170031</td><td align="left">NICO                                                                                                </td><td align="left">SISTEM INFORMASI         </td><td align="left">PROTESTAN</td><td align="left">08566207883    </td><td align="left">nico.825170031@stu.untar.ac.id                    </td>
+		</tr><tr class="textmode">
+			<td align="left">32</td><td align="left">825170032</td><td align="left">EDUARDO                                                                                             </td><td align="left">SISTEM INFORMASI         </td><td align="left">BUDHA</td><td align="left">087882353344   </td><td align="left">eduardo.825170032@stu.untar.ac.id                 </td>
+		</tr><tr class="textmode">
+			<td align="left">33</td><td align="left">825170033</td><td align="left">PANTAREI TANTRA BAHANA                                                                              </td><td align="left">SISTEM INFORMASI         </td><td align="left">PROTESTAN</td><td align="left">087874884531   </td><td align="left">pantarei.825170033@stu.untar.ac.id                </td>
+		</tr><tr class="textmode">
+			<td align="left">34</td><td align="left">825170034</td><td align="left">VIOLA GABRIELLA                                                                                     </td><td align="left">SISTEM INFORMASI         </td><td align="left">PROTESTAN</td><td align="left">089679737601   </td><td align="left">viola.825170034@stu.untar.ac.id                   </td>
+		</tr><tr class="textmode">
+			<td align="left">35</td><td align="left">825170035</td><td align="left">FRIEDERICH                                                                                          </td><td align="left">SISTEM INFORMASI         </td><td align="left">KATOLIK</td><td align="left">085656652157   </td><td align="left">friederich.825170035@stu.untar.ac.id              </td>
+		</tr><tr class="textmode">
+			<td align="left">36</td><td align="left">825170036</td><td align="left">STEVEN                                                                                              </td><td align="left">SISTEM INFORMASI         </td><td align="left">PROTESTAN</td><td align="left">081212357578   </td><td align="left">steven.825170036@stu.untar.ac.id                  </td>
+		</tr><tr class="textmode">
+			<td align="left">37</td><td align="left">825170037</td><td align="left">WILLIAM YAPUTRA                                                                                     </td><td align="left">SISTEM INFORMASI         </td><td align="left">KATOLIK</td><td align="left">081559602288   </td><td align="left">william.825170037@stu.untar.ac.id                 </td>
+		</tr><tr class="textmode">
+			<td align="left">38</td><td align="left">825170038</td><td align="left">ZAINUL HASAN                                                                                        </td><td align="left">SISTEM INFORMASI         </td><td align="left">ISLAM</td><td align="left">089533271471   </td><td align="left">zainul.825170038@stu.untar.ac.id                  </td>
+		</tr><tr class="textmode">
+			<td align="left">39</td><td align="left">825170039</td><td align="left">HENRY MALIANTO                                                                                      </td><td align="left">SISTEM INFORMASI         </td><td align="left">BUDHA</td><td align="left">087775739844   </td><td align="left">henry.825170039@stu.untar.ac.id                   </td>
+		</tr><tr class="textmode">
+			<td align="left">40</td><td align="left">825170040</td><td align="left">GALVIN GUNAWAN                                                                                      </td><td align="left">SISTEM INFORMASI         </td><td align="left">BUDHA</td><td align="left">081949448330   </td><td align="left">galvin.825170040@stu.untar.ac.id                  </td>
+		</tr><tr class="textmode">
+			<td align="left">41</td><td align="left">825170041</td><td align="left">HIZKIA NATANAEL                                                                                     </td><td align="left">SISTEM INFORMASI         </td><td align="left">PROTESTAN</td><td align="left">081387946839   </td><td align="left">hizkia.825170041@stu.untar.ac.id                  </td>
+		</tr><tr class="textmode">
+			<td align="left">42</td><td align="left">825170042</td><td align="left">BASTIAN PARLUHUTAN                                                                                  </td><td align="left">SISTEM INFORMASI         </td><td align="left">PROTESTAN</td><td align="left">089693267554   </td><td align="left">bastian.825170042@stu.untar.ac.id                 </td>
+		</tr><tr class="textmode">
+			<td align="left">43</td><td align="left">825170043</td><td align="left">MICHAEL OWEN WIJAYA                                                                                 </td><td align="left">SISTEM INFORMASI         </td><td align="left">PROTESTAN</td><td align="left">087780330606   </td><td align="left">michael.825170043@stu.untar.ac.id                 </td>
+		</tr><tr class="textmode">
+			<td align="left">44</td><td align="left">825170044</td><td align="left">ADITYA RIZKI ALKAUTSAR                                                                              </td><td align="left">SISTEM INFORMASI         </td><td align="left">ISLAM</td><td align="left">081285534630   </td><td align="left">aditya.825170044@stu.untar.ac.id                  </td>
+		</tr><tr class="textmode">
+			<td align="left">45</td><td align="left">825170045</td><td align="left">MATHILDA FRANSISCA PALINDATU KABANGNGA                                                              </td><td align="left">SISTEM INFORMASI         </td><td align="left">PROTESTAN</td><td align="left">081382450891   </td><td align="left">mathilda.825170045@stu.untar.ac.id                </td>
+		</tr><tr class="textmode">
+			<td align="left">46</td><td align="left">825170046</td><td align="left">VINCLINT VANLION SIANATA                                                                            </td><td align="left">SISTEM INFORMASI         </td><td align="left">BUDHA</td><td align="left">08985083940    </td><td align="left">vinclint.825170046@stu.untar.ac.id                </td>
+		</tr><tr class="textmode">
+			<td align="left">47</td><td align="left">825170047</td><td align="left">ROBBY CASHIRAGI                                                                                     </td><td align="left">SISTEM INFORMASI         </td><td align="left">PROTESTAN</td><td align="left">081908951949   </td><td align="left">robby.825170047@stu.untar.ac.id                   </td>
+		</tr><tr class="textmode">
+			<td align="left">48</td><td align="left">825170048</td><td align="left">MALVIN SELO                                                                                         </td><td align="left">SISTEM INFORMASI         </td><td align="left">PROTESTAN</td><td align="left">081381737554   </td><td align="left">malvin.825170048@stu.untar.ac.id                  </td>
+		</tr><tr class="textmode">
+			<td align="left">49</td><td align="left">825170049</td><td align="left">ERVAN SETIAWAN                                                                                      </td><td align="left">SISTEM INFORMASI         </td><td align="left">BUDHA</td><td align="left">081911030399   </td><td align="left">ervan.825170049@stu.untar.ac.id                   </td>
+		</tr><tr class="textmode">
+			<td align="left">50</td><td align="left">825170050</td><td align="left">RYAN BAYU NUGROHO                                                                                   </td><td align="left">SISTEM INFORMASI         </td><td align="left">ISLAM</td><td align="left">082112670686   </td><td align="left">ryan.825170050@stu.untar.ac.id                    </td>
+		</tr><tr class="textmode">
+			<td align="left">51</td><td align="left">825170051</td><td align="left">FELIX                                                                                               </td><td align="left">SISTEM INFORMASI         </td><td align="left">BUDHA</td><td align="left">087808813739   </td><td align="left">felix.825170051@stu.untar.ac.id                   </td>
+		</tr><tr class="textmode">
+			<td align="left">52</td><td align="left">825170052</td><td align="left">RAMA PUTRA KUSWIDYAWAN                                                                              </td><td align="left">SISTEM INFORMASI         </td><td align="left">ISLAM</td><td align="left">085782083298   </td><td align="left">rama.825170052@stu.untar.ac.id                    </td>
+		</tr><tr class="textmode">
+			<td align="left">53</td><td align="left">825170053</td><td align="left">SHERLIN ALEX SANDRA                                                                                 </td><td align="left">SISTEM INFORMASI         </td><td align="left">PROTESTAN</td><td align="left">085813147770   </td><td align="left">sherlin.825170053@stu.untar.ac.id                 </td>
+		</tr><tr class="textmode">
+			<td align="left">54</td><td align="left">825170054</td><td align="left">STEVEN WINATHA                                                                                      </td><td align="left">SISTEM INFORMASI         </td><td align="left">PROTESTAN</td><td align="left">08129430663    </td><td align="left">steven.825170054@stu.untar.ac.id                  </td>
+		</tr><tr class="textmode">
+			<td align="left">55</td><td align="left">825170055</td><td align="left">JONATHAN GABRIEL KEREH                                                                              </td><td align="left">SISTEM INFORMASI         </td><td align="left">PROTESTAN</td><td align="left">082210319765   </td><td align="left">jonathan.825170055@stu.untar.ac.id                </td>
+		</tr><tr class="textmode">
+			<td align="left">56</td><td align="left">825170056</td><td align="left">NOERTANDY JAYA                                                                                      </td><td align="left">SISTEM INFORMASI         </td><td align="left">ISLAM</td><td align="left">085880001617   </td><td align="left">noertandy.825170056@stu.untar.ac.id               </td>
+		</tr><tr class="textmode">
+			<td align="left">57</td><td align="left">825172001</td><td align="left">DONNI KURNIAWAN                                                                                     </td><td align="left">SISTEM INFORMASI         </td><td align="left">BUDHA</td><td align="left">081807296999   </td><td align="left">donni.825172001@stu.untar.ac.id                   </td>
+		</tr><tr class="textmode">
+			<td align="left">58</td><td align="left">825179101</td><td align="left">JESSICA PUTRI                                                                                       </td><td align="left">SISTEM INFORMASI         </td><td align="left">PROTESTAN</td><td align="left">081312212231   </td><td align="left">jessica.825179101@stu.untar.ac.id                 </td>
+		</tr><tr class="textmode">
+			<td align="left">59</td><td align="left">825179201</td><td align="left">MUHAMMAD FARHAN HAIDAR                                                                              </td><td align="left">SISTEM INFORMASI         </td><td align="left">ISLAM</td><td align="left">08170170711    </td><td align="left">muhammad.825179201@stu.untar.ac.id                </td>
+		</tr>
+	</table>
+</div>

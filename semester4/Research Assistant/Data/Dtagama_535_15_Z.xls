@@ -1,0 +1,195 @@
+<style>.textmode{mso-number-format:\@;}</style><table border='1'><tr valign='middle'><td rowspan='1' align='center' valign='middle'>No</td><td rowspan='1' align='center' valign='middle'>NPM</td><td rowspan='1' align='center' valign='middle'>Nama</td><td rowspan='1' align='center' valign='middle'>Program Studi</td><td rowspan='1' align='center' valign='middle'>Agama</td><td rowspan='1' align='center' valign='middle'>HP</td><td rowspan='1' align='center' valign='middle'>Email</td><div>
+	<table cellspacing="0" rules="all" border="1" style="border-collapse:collapse;">
+		<tr class="textmode">
+			<td align="left">1</td><td align="left">535150001</td><td align="left">ALBERT SANY                                                                                         </td><td align="left">TEKNIK INFORMATIKA       </td><td align="left">BUDHA</td><td align="left">087883916216   </td><td align="left">ravexroyen@gmail.com                              </td>
+		</tr><tr class="textmode">
+			<td align="left">2</td><td align="left">535150002</td><td align="left">RAYMOND                                                                                             </td><td align="left">TEKNIK INFORMATIKA       </td><td align="left">BUDHA</td><td align="left">089678999778   </td><td align="left">raymond.535150002@stu.untar.ac.id                 </td>
+		</tr><tr class="textmode">
+			<td align="left">3</td><td align="left">535150003</td><td align="left">KEVIN                                                                                               </td><td align="left">TEKNIK INFORMATIKA       </td><td align="left">BUDHA</td><td align="left">081286083705   </td><td align="left">kevinn2809@gmail.com                              </td>
+		</tr><tr class="textmode">
+			<td align="left">4</td><td align="left">535150004</td><td align="left">ARTHIAN TERRY SAMMATHA S                                                                            </td><td align="left">TEKNIK INFORMATIKA       </td><td align="left">BUDHA</td><td align="left">087883610120   </td><td align="left">TERRY.ARTHIAN@GMAIL.COM                           </td>
+		</tr><tr class="textmode">
+			<td align="left">5</td><td align="left">535150005</td><td align="left">RYAN SURJADI                                                                                        </td><td align="left">TEKNIK INFORMATIKA       </td><td align="left">KATOLIK</td><td align="left">083891157555   </td><td align="left">ryansurjadi88@gmail.com                           </td>
+		</tr><tr class="textmode">
+			<td align="left">6</td><td align="left">535150006</td><td align="left">BELLA                                                                                               </td><td align="left">TEKNIK INFORMATIKA       </td><td align="left">BUDHA</td><td align="left">081212630097   </td><td align="left">mz.bellalie@gmail.com                             </td>
+		</tr><tr class="textmode">
+			<td align="left">7</td><td align="left">535150007</td><td align="left">HENRY HALIM                                                                                         </td><td align="left">TEKNIK INFORMATIKA       </td><td align="left">BUDHA</td><td align="left">081219496238   </td><td align="left">henry.535150007@stu.untar.ac.id                   </td>
+		</tr><tr class="textmode">
+			<td align="left">8</td><td align="left">535150008</td><td align="left">EDWIN KHO                                                                                           </td><td align="left">TEKNIK INFORMATIKA       </td><td align="left">PROTESTAN</td><td align="left">0895391394814  </td><td align="left">kayedwin@@yahoo.com                               </td>
+		</tr><tr class="textmode">
+			<td align="left">9</td><td align="left">535150009</td><td align="left">VARYAN                                                                                              </td><td align="left">TEKNIK INFORMATIKA       </td><td align="left">BUDHA</td><td align="left">081908676078   </td><td align="left">varyansumarly@gmail.com                           </td>
+		</tr><tr class="textmode">
+			<td align="left">10</td><td align="left">535150010</td><td align="left">RENALDY CAHYA                                                                                       </td><td align="left">TEKNIK INFORMATIKA       </td><td align="left">ISLAM</td><td align="left">089678922875   </td><td align="left">renaldy.535150010@stu.untar.ac.id                 </td>
+		</tr><tr class="textmode">
+			<td align="left">11</td><td align="left">535150011</td><td align="left">CINDY WINATA                                                                                        </td><td align="left">TEKNIK INFORMATIKA       </td><td align="left">BUDHA</td><td align="left">081297845669   </td><td align="left">cndywinata@gmail.com                              </td>
+		</tr><tr class="textmode">
+			<td align="left">12</td><td align="left">535150012</td><td align="left">EDWIN JAYADI                                                                                        </td><td align="left">TEKNIK INFORMATIKA       </td><td align="left">PROTESTAN</td><td align="left">081806746469   </td><td align="left">edwin.535150012@stu.untar.ac.id                   </td>
+		</tr><tr class="textmode">
+			<td align="left">13</td><td align="left">535150013</td><td align="left">KETJIE                                                                                              </td><td align="left">TEKNIK INFORMATIKA       </td><td align="left">BUDHA</td><td align="left">089503638590   </td><td align="left">ketjiecong@gmail.com                              </td>
+		</tr><tr class="textmode">
+			<td align="left">14</td><td align="left">535150014</td><td align="left">FRANKY YOGA                                                                                         </td><td align="left">TEKNIK INFORMATIKA       </td><td align="left">BUDHA</td><td align="left">081944351995   </td><td align="left">frangky.535150014@stu.untar.ac.id                 </td>
+		</tr><tr class="textmode">
+			<td align="left">15</td><td align="left">535150015</td><td align="left">HENGKI PRANOTO                                                                                      </td><td align="left">TEKNIK INFORMATIKA       </td><td align="left">BUDHA</td><td align="left">081293918176   </td><td align="left">lunatic.icee@gmail.com                            </td>
+		</tr><tr class="textmode">
+			<td align="left">16</td><td align="left">535150016</td><td align="left">ROBERTO ANTONIO                                                                                     </td><td align="left">TEKNIK INFORMATIKA       </td><td align="left">PROTESTAN</td><td align="left">083872758582   </td><td align="left">robertoa.lin11@gmail.com                          </td>
+		</tr><tr class="textmode">
+			<td align="left">17</td><td align="left">535150017</td><td align="left">JAMES JUNIOR                                                                                        </td><td align="left">TEKNIK INFORMATIKA       </td><td align="left">PROTESTAN</td><td align="left">081314577970   </td><td align="left">james.junior90@yahoo.com                          </td>
+		</tr><tr class="textmode">
+			<td align="left">18</td><td align="left">535150018</td><td align="left">ADITYA DWI SEPTIAN                                                                                  </td><td align="left">TEKNIK INFORMATIKA       </td><td align="left">ISLAM</td><td align="left">081293671220   </td><td align="left">aditpsh@gmail.com                                 </td>
+		</tr><tr class="textmode">
+			<td align="left">19</td><td align="left">535150019</td><td align="left">ZAKHAYU RIAN                                                                                        </td><td align="left">TEKNIK INFORMATIKA       </td><td align="left">KATOLIK</td><td align="left">081288666528   </td><td align="left">zakhayu.535150019@stu.untar.ac.id                 </td>
+		</tr><tr class="textmode">
+			<td align="left">20</td><td align="left">535150020</td><td align="left">JACKY                                                                                               </td><td align="left">TEKNIK INFORMATIKA       </td><td align="left">BUDHA</td><td align="left">082298685155   </td><td align="left">siauwjacky@gmail.com                              </td>
+		</tr><tr class="textmode">
+			<td align="left">21</td><td align="left">535150021</td><td align="left">WILLY KURNIAWAN                                                                                     </td><td align="left">TEKNIK INFORMATIKA       </td><td align="left">PROTESTAN</td><td align="left">085894933685   </td><td align="left">willykurniawanz@gmail.com                         </td>
+		</tr><tr class="textmode">
+			<td align="left">22</td><td align="left">535150022</td><td align="left">GEORGE TIMOTIUS HAREFA                                                                              </td><td align="left">TEKNIK INFORMATIKA       </td><td align="left">PROTESTAN</td><td align="left">081261105834   </td><td align="left">georgetimotius.23@gmail.com                       </td>
+		</tr><tr class="textmode">
+			<td align="left">23</td><td align="left">535150023</td><td align="left">JEFFRY                                                                                              </td><td align="left">TEKNIK INFORMATIKA       </td><td align="left">BUDHA</td><td align="left">0895367267169  </td><td align="left">jeffry.535150023@stu.untar.ac.id                  </td>
+		</tr><tr class="textmode">
+			<td align="left">24</td><td align="left">535150024</td><td align="left">FEDERIKSEN YUNI ANDRI                                                                               </td><td align="left">TEKNIK INFORMATIKA       </td><td align="left">KATOLIK</td><td align="left">087794064666   </td><td align="left">federiksen.535150024@stu.untar.ac.id              </td>
+		</tr><tr class="textmode">
+			<td align="left">25</td><td align="left">535150025</td><td align="left">IVAN SUTJIADI                                                                                       </td><td align="left">TEKNIK INFORMATIKA       </td><td align="left">KATOLIK</td><td align="left">087775701960   </td><td align="left">ivanssutjiadi@gmail.com                           </td>
+		</tr><tr class="textmode">
+			<td align="left">26</td><td align="left">535150026</td><td align="left">CHARLES YULIANSEN                                                                                   </td><td align="left">TEKNIK INFORMATIKA       </td><td align="left">PROTESTAN</td><td align="left">082114342328   </td><td align="left">charles.535150026@stu.untar.ac.id                 </td>
+		</tr><tr class="textmode">
+			<td align="left">27</td><td align="left">535150027</td><td align="left">FEBRYAN VALENTINO TANSEN                                                                            </td><td align="left">TEKNIK INFORMATIKA       </td><td align="left">BUDHA</td><td align="left">082221049981   </td><td align="left">febriantan99@gmail.com                            </td>
+		</tr><tr class="textmode">
+			<td align="left">28</td><td align="left">535150028</td><td align="left">JUNI HANDOKO                                                                                        </td><td align="left">TEKNIK INFORMATIKA       </td><td align="left">BUDHA</td><td align="left">082184755697   </td><td align="left">junihandoko97@gmail.com                           </td>
+		</tr><tr class="textmode">
+			<td align="left">29</td><td align="left">535150029</td><td align="left">DIRI ANINDYAH QONITAH D.P                                                                           </td><td align="left">TEKNIK INFORMATIKA       </td><td align="left">ISLAM</td><td align="left">085711556441   </td><td align="left">diri.535150029@stu.untar.ac.id                    </td>
+		</tr><tr class="textmode">
+			<td align="left">30</td><td align="left">535150030</td><td align="left">ANGELICA SISWOYO                                                                                    </td><td align="left">TEKNIK INFORMATIKA       </td><td align="left">KATOLIK</td><td align="left">081930835982   </td><td align="left">angelica.535150030@stu.untar.ac.id                </td>
+		</tr><tr class="textmode">
+			<td align="left">31</td><td align="left">535150031</td><td align="left">WIDI SANTOSO                                                                                        </td><td align="left">TEKNIK INFORMATIKA       </td><td align="left">BUDHA</td><td align="left">089602507843   </td><td align="left">widi.535150031@stu.untar.ac.id                    </td>
+		</tr><tr class="textmode">
+			<td align="left">32</td><td align="left">535150032</td><td align="left">FONDA FERNANDI HAMID                                                                                </td><td align="left">TEKNIK INFORMATIKA       </td><td align="left">KATOLIK</td><td align="left">081280025404   </td><td align="left">fonda.fernandi@gmail.com                          </td>
+		</tr><tr class="textmode">
+			<td align="left">33</td><td align="left">535150033</td><td align="left">FELIX GOTAMA                                                                                        </td><td align="left">TEKNIK INFORMATIKA       </td><td align="left">BUDHA</td><td align="left">089696817960   </td><td align="left">felix.535150033@stu.untar.ac.id                   </td>
+		</tr><tr class="textmode">
+			<td align="left">34</td><td align="left">535150034</td><td align="left">TANIA RIZGITTA                                                                                      </td><td align="left">TEKNIK INFORMATIKA       </td><td align="left">KATOLIK</td><td align="left">083875558623   </td><td align="left">taniarizgitta@hotmail.com                         </td>
+		</tr><tr class="textmode">
+			<td align="left">35</td><td align="left">535150035</td><td align="left">KEVIN SONG MARDI                                                                                    </td><td align="left">TEKNIK INFORMATIKA       </td><td align="left">KATOLIK</td><td align="left">083875211039   </td><td align="left">kevinsongmardi@gmail.com                          </td>
+		</tr><tr class="textmode">
+			<td align="left">36</td><td align="left">535150036</td><td align="left">ARYANATTA PARAMITA TIRATANA                                                                         </td><td align="left">TEKNIK INFORMATIKA       </td><td align="left">BUDHA</td><td align="left">087723638383   </td><td align="left">aryanattapt28@gmail.com                           </td>
+		</tr><tr class="textmode">
+			<td align="left">37</td><td align="left">535150037</td><td align="left">MARSIA                                                                                              </td><td align="left">TEKNIK INFORMATIKA       </td><td align="left">KATOLIK</td><td align="left">087887238535   </td><td align="left">marsia.535150037@stu.untar.ac.id                  </td>
+		</tr><tr class="textmode">
+			<td align="left">38</td><td align="left">535150038</td><td align="left">KEVIN                                                                                               </td><td align="left">TEKNIK INFORMATIKA       </td><td align="left">KATOLIK</td><td align="left">085881245313   </td><td align="left">kevinzencaster@gmail.com                          </td>
+		</tr><tr class="textmode">
+			<td align="left">39</td><td align="left">535150039</td><td align="left">TARSISIUS STANLEY                                                                                   </td><td align="left">TEKNIK INFORMATIKA       </td><td align="left">KATOLIK</td><td align="left">081298841512   </td><td align="left">stanley_atmadja@yahoo.com                         </td>
+		</tr><tr class="textmode">
+			<td align="left">40</td><td align="left">535150040</td><td align="left">JANUAR MANSUR                                                                                       </td><td align="left">TEKNIK INFORMATIKA       </td><td align="left">PROTESTAN</td><td align="left">08978132219    </td><td align="left">januarmansur@yahoo.com                            </td>
+		</tr><tr class="textmode">
+			<td align="left">41</td><td align="left">535150041</td><td align="left">ISAIAS F.X.F.A. FELNDITI                                                                            </td><td align="left">TEKNIK INFORMATIKA       </td><td align="left">KATOLIK</td><td align="left">08995940955    </td><td align="left">felnditi@gmail.com                                </td>
+		</tr><tr class="textmode">
+			<td align="left">42</td><td align="left">535150042</td><td align="left">HERDIMAN                                                                                            </td><td align="left">TEKNIK INFORMATIKA       </td><td align="left">BUDHA</td><td align="left">081291257661   </td><td align="left">herdimanlatief3@gmail.com                         </td>
+		</tr><tr class="textmode">
+			<td align="left">43</td><td align="left">535150043</td><td align="left">REYNALDO                                                                                            </td><td align="left">TEKNIK INFORMATIKA       </td><td align="left">PROTESTAN</td><td align="left">082111739383   </td><td align="left">aldoboy97@gmail.com                               </td>
+		</tr><tr class="textmode">
+			<td align="left">44</td><td align="left">535150044</td><td align="left">DAVID REYNALDO                                                                                      </td><td align="left">TEKNIK INFORMATIKA       </td><td align="left">PROTESTAN</td><td align="left">089686251868   </td><td align="left">davidreynaldo.ox@gmail.com                        </td>
+		</tr><tr class="textmode">
+			<td align="left">45</td><td align="left">535150045</td><td align="left">YOFEREN                                                                                             </td><td align="left">TEKNIK INFORMATIKA       </td><td align="left">PROTESTAN</td><td align="left">085693055114   </td><td align="left">yoferen.535150045@stu.untar.ac.id                 </td>
+		</tr><tr class="textmode">
+			<td align="left">46</td><td align="left">535150046</td><td align="left">JESSEN YAPUTRA SETIAWAN                                                                             </td><td align="left">TEKNIK INFORMATIKA       </td><td align="left">KATOLIK</td><td align="left">081398177878   </td><td align="left">jessen.yaputra@gmail.com                          </td>
+		</tr><tr class="textmode">
+			<td align="left">47</td><td align="left">535150047</td><td align="left">KEVIN                                                                                               </td><td align="left">TEKNIK INFORMATIKA       </td><td align="left">KATOLIK</td><td align="left">0895391832062  </td><td align="left">kevinhalim10@yahoo.com                            </td>
+		</tr><tr class="textmode">
+			<td align="left">48</td><td align="left">535150048</td><td align="left">TOMMY WICAKSONO                                                                                     </td><td align="left">TEKNIK INFORMATIKA       </td><td align="left">KATOLIK</td><td align="left">082114747423   </td><td align="left">tomy0344@gmail.com                                </td>
+		</tr><tr class="textmode">
+			<td align="left">49</td><td align="left">535150049</td><td align="left">SURYANTO                                                                                            </td><td align="left">TEKNIK INFORMATIKA       </td><td align="left">KATOLIK</td><td align="left">085777261270   </td><td align="left">suryantonick@gmail.com                            </td>
+		</tr><tr class="textmode">
+			<td align="left">50</td><td align="left">535150050</td><td align="left">DEVEN AUSTIN                                                                                        </td><td align="left">TEKNIK INFORMATIKA       </td><td align="left">PROTESTAN</td><td align="left">082221100706   </td><td align="left">devenaustinnn@yahoo.com                           </td>
+		</tr><tr class="textmode">
+			<td align="left">51</td><td align="left">535150051</td><td align="left">NOVALDO RUSTANDI                                                                                    </td><td align="left">TEKNIK INFORMATIKA       </td><td align="left">BUDHA</td><td align="left">081290273114   </td><td align="left">novaldo@rocketmail.com                            </td>
+		</tr><tr class="textmode">
+			<td align="left">52</td><td align="left">535150052</td><td align="left">STELLA ESTER RANTUNG                                                                                </td><td align="left">TEKNIK INFORMATIKA       </td><td align="left">PROTESTAN</td><td align="left">081574882886   </td><td align="left">stellaaarantung@gmail.com                         </td>
+		</tr><tr class="textmode">
+			<td align="left">53</td><td align="left">535150053</td><td align="left">ANDY WIJAYA                                                                                         </td><td align="left">TEKNIK INFORMATIKA       </td><td align="left">PROTESTAN</td><td align="left">087779966659   </td><td align="left">andy.535150053@stu.untar.ac.id                    </td>
+		</tr><tr class="textmode">
+			<td align="left">54</td><td align="left">535150054</td><td align="left">NUR IFDANNI                                                                                         </td><td align="left">TEKNIK INFORMATIKA       </td><td align="left">ISLAM</td><td align="left">081277531191   </td><td align="left">nur.535150054@stu.untar.ac.id                     </td>
+		</tr><tr class="textmode">
+			<td align="left">55</td><td align="left">535150055</td><td align="left">AGNES MARCELLA                                                                                      </td><td align="left">TEKNIK INFORMATIKA       </td><td align="left">PROTESTAN</td><td align="left">087876698687   </td><td align="left">agnes.535150055@stu.untar.ac.id                   </td>
+		</tr><tr class="textmode">
+			<td align="left">56</td><td align="left">535150056</td><td align="left">GEVIN VALERIAN                                                                                      </td><td align="left">TEKNIK INFORMATIKA       </td><td align="left">BUDHA</td><td align="left">081280808002   </td><td align="left">gevin.535150056@stu.untar.ac.id                   </td>
+		</tr><tr class="textmode">
+			<td align="left">57</td><td align="left">535150057</td><td align="left">RIZKY JUNIAR RAHARJA                                                                                </td><td align="left">TEKNIK INFORMATIKA       </td><td align="left">KATOLIK</td><td align="left">087878881815   </td><td align="left">rizky.535150057@stu.untar.ac.id                   </td>
+		</tr><tr class="textmode">
+			<td align="left">58</td><td align="left">535150058</td><td align="left">MICHAEL                                                                                             </td><td align="left">TEKNIK INFORMATIKA       </td><td align="left">BUDHA</td><td align="left">089630861863   </td><td align="left">mchaelwong@gmail.com                              </td>
+		</tr><tr class="textmode">
+			<td align="left">59</td><td align="left">535150059</td><td align="left">MARTIN                                                                                              </td><td align="left">TEKNIK INFORMATIKA       </td><td align="left">KATOLIK</td><td align="left">089503635991   </td><td align="left">martinwijaya97@gmail.com                          </td>
+		</tr><tr class="textmode">
+			<td align="left">60</td><td align="left">535150060</td><td align="left">MICHAEL JOSHUA                                                                                      </td><td align="left">TEKNIK INFORMATIKA       </td><td align="left">PROTESTAN</td><td align="left">081298136561   </td><td align="left">michael.535150060@stu.untar.ac.id                 </td>
+		</tr><tr class="textmode">
+			<td align="left">61</td><td align="left">535150061</td><td align="left">DEVI TIANI                                                                                          </td><td align="left">TEKNIK INFORMATIKA       </td><td align="left">KATOLIK</td><td align="left">087809203186   </td><td align="left">devi.535150061@stu.untar.ac.id                    </td>
+		</tr><tr class="textmode">
+			<td align="left">62</td><td align="left">535150062</td><td align="left">GIRI NATA CAHYADI                                                                                   </td><td align="left">TEKNIK INFORMATIKA       </td><td align="left">BUDHA</td><td align="left">08988625575    </td><td align="left">giri.535150062@stu.untar.ac.id                    </td>
+		</tr><tr class="textmode">
+			<td align="left">63</td><td align="left">535150063</td><td align="left">STEVEN                                                                                              </td><td align="left">TEKNIK INFORMATIKA       </td><td align="left">PROTESTAN</td><td align="left">087877894488   </td><td align="left">steven.535150063@stu.untar.ac.id                  </td>
+		</tr><tr class="textmode">
+			<td align="left">64</td><td align="left">535150064</td><td align="left">FENDY AUGUSFIAN                                                                                     </td><td align="left">TEKNIK INFORMATIKA       </td><td align="left">PROTESTAN</td><td align="left">08998333135    </td><td align="left">fendy.535150064@stu.untar.ac.id                   </td>
+		</tr><tr class="textmode">
+			<td align="left">65</td><td align="left">535150065</td><td align="left">EDWIN SURYAPUTRA                                                                                    </td><td align="left">TEKNIK INFORMATIKA       </td><td align="left">KATOLIK</td><td align="left">083808781475   </td><td align="left">edwinsuryaputra19@gmail.com                       </td>
+		</tr><tr class="textmode">
+			<td align="left">66</td><td align="left">535150066</td><td align="left">YOGIE ANUGRAH RAMADHAN BADRUN                                                                       </td><td align="left">TEKNIK INFORMATIKA       </td><td align="left">ISLAM</td><td align="left">081299111297   </td><td align="left">yogie.535150066@stu.untar.ac.id                   </td>
+		</tr><tr class="textmode">
+			<td align="left">67</td><td align="left">535150067</td><td align="left">CORNELIUS                                                                                           </td><td align="left">TEKNIK INFORMATIKA       </td><td align="left">PROTESTAN</td><td align="left">08151810196    </td><td align="left">cornelius.535150067@stu.untar.ac.id               </td>
+		</tr><tr class="textmode">
+			<td align="left">68</td><td align="left">535150068</td><td align="left">SAMUEL                                                                                              </td><td align="left">TEKNIK INFORMATIKA       </td><td align="left">PROTESTAN</td><td align="left">087776677534   </td><td align="left">samuel.535150068@stu.untar.ac.id                  </td>
+		</tr><tr class="textmode">
+			<td align="left">69</td><td align="left">535150069</td><td align="left">HANS                                                                                                </td><td align="left">TEKNIK INFORMATIKA       </td><td align="left">PROTESTAN</td><td align="left">081212168108   </td><td align="left">hans.535150069@stu.untar.ac.id                    </td>
+		</tr><tr class="textmode">
+			<td align="left">70</td><td align="left">535150070</td><td align="left">JONATHAN WILLIAM                                                                                    </td><td align="left">TEKNIK INFORMATIKA       </td><td align="left">KATOLIK</td><td align="left">08119297070    </td><td align="left">jonathan.535150070@stu.untar.ac.id                </td>
+		</tr><tr class="textmode">
+			<td align="left">71</td><td align="left">535150071</td><td align="left">JESSICA                                                                                             </td><td align="left">TEKNIK INFORMATIKA       </td><td align="left">PROTESTAN</td><td align="left">08994526967    </td><td align="left">jessica.535150071@stu.untar.ac.id                 </td>
+		</tr><tr class="textmode">
+			<td align="left">72</td><td align="left">535150072</td><td align="left">HELMI YUSUF SUSANTO                                                                                 </td><td align="left">TEKNIK INFORMATIKA       </td><td align="left">ISLAM</td><td align="left">087878065625   </td><td align="left">helmi.535150072@stu.untar.ac.id                   </td>
+		</tr><tr class="textmode">
+			<td align="left">73</td><td align="left">535150073</td><td align="left">ANDY WIJAYA                                                                                         </td><td align="left">TEKNIK INFORMATIKA       </td><td align="left">BUDHA</td><td align="left">082288437485   </td><td align="left">andywijayasi7@gmail.com                           </td>
+		</tr><tr class="textmode">
+			<td align="left">74</td><td align="left">535150074</td><td align="left">HELMY TIRTA                                                                                         </td><td align="left">TEKNIK INFORMATIKA       </td><td align="left">PROTESTAN</td><td align="left">089687685148   </td><td align="left">sudartoatmadja@gmail.com                          </td>
+		</tr><tr class="textmode">
+			<td align="left">75</td><td align="left">535150075</td><td align="left">RIO APRILINO SUSIANTO                                                                               </td><td align="left">TEKNIK INFORMATIKA       </td><td align="left">ISLAM</td><td align="left">081297441772   </td><td align="left">rio.535150075@stu.untar.ac.id                     </td>
+		</tr><tr class="textmode">
+			<td align="left">76</td><td align="left">535150076</td><td align="left">ALDI SALIM                                                                                          </td><td align="left">TEKNIK INFORMATIKA       </td><td align="left">KATOLIK</td><td align="left">081274743989   </td><td align="left">aldisalimti@gmail.com                             </td>
+		</tr><tr class="textmode">
+			<td align="left">77</td><td align="left">535150077</td><td align="left">NICKOLAS CORNELIUS SIANTAR                                                                          </td><td align="left">TEKNIK INFORMATIKA       </td><td align="left">KATOLIK</td><td align="left">082119602899   </td><td align="left">nickolas.cornelius@gmail.com                      </td>
+		</tr><tr class="textmode">
+			<td align="left">78</td><td align="left">535150078</td><td align="left">ANTONIUS RONALD W                                                                                   </td><td align="left">TEKNIK INFORMATIKA       </td><td align="left">KATOLIK</td><td align="left">085894490611   </td><td align="left">antonius.535150078@stu.untar.ac.id                </td>
+		</tr><tr class="textmode">
+			<td align="left">79</td><td align="left">535150079</td><td align="left">WILLIAM RUSAIDY                                                                                     </td><td align="left">TEKNIK INFORMATIKA       </td><td align="left">KATOLIK</td><td align="left">081296143227   </td><td align="left">william.535150079@stu.untar.ac.id                 </td>
+		</tr><tr class="textmode">
+			<td align="left">80</td><td align="left">535150080</td><td align="left">VINCENT ANTHONY                                                                                     </td><td align="left">TEKNIK INFORMATIKA       </td><td align="left">ISLAM</td><td align="left">087877915005   </td><td align="left">vincent.535150080@stu.untar.ac.id                 </td>
+		</tr><tr class="textmode">
+			<td align="left">81</td><td align="left">535150081</td><td align="left">KRISNANTO                                                                                           </td><td align="left">TEKNIK INFORMATIKA       </td><td align="left">BUDHA</td><td align="left">085364894788   </td><td align="left">krisnanto.535150081@stu.untar.ac.id               </td>
+		</tr><tr class="textmode">
+			<td align="left">82</td><td align="left">535150082</td><td align="left">JOKY PUTRA                                                                                          </td><td align="left">TEKNIK INFORMATIKA       </td><td align="left">BUDHA</td><td align="left">081246776374   </td><td align="left">joky.535150082@stu.untar.ac.id                    </td>
+		</tr><tr class="textmode">
+			<td align="left">83</td><td align="left">535150083</td><td align="left">YOHANES PANGARIBUAN                                                                                 </td><td align="left">TEKNIK INFORMATIKA       </td><td align="left">PROTESTAN</td><td align="left">085297233324   </td><td align="left">yohanes.535150083@stu.untar.ac.id                 </td>
+		</tr><tr class="textmode">
+			<td align="left">84</td><td align="left">535150084</td><td align="left">RICARDO KURNIADI                                                                                    </td><td align="left">TEKNIK INFORMATIKA       </td><td align="left">PROTESTAN</td><td align="left">089607052888   </td><td align="left">ricardo.535150084@stu.untar.ac.id                 </td>
+		</tr><tr class="textmode">
+			<td align="left">85</td><td align="left">535150085</td><td align="left">NADIA RAMADHANI                                                                                     </td><td align="left">TEKNIK INFORMATIKA       </td><td align="left">PROTESTAN</td><td align="left">089686917379   </td><td align="left">alvinovivino@gmail.com                            </td>
+		</tr><tr class="textmode">
+			<td align="left">86</td><td align="left">535150086</td><td align="left">PADMESWARI NANDIYA                                                                                  </td><td align="left">TEKNIK INFORMATIKA       </td><td align="left">BUDHA</td><td align="left">081289099240   </td><td align="left">padmeswari.535150086@stu.untar.ac.id              </td>
+		</tr><tr class="textmode">
+			<td align="left">87</td><td align="left">535150087</td><td align="left">YEREMIA OCTAVINO                                                                                    </td><td align="left">TEKNIK INFORMATIKA       </td><td align="left">PROTESTAN</td><td align="left">089531051995   </td><td align="left">yeremia.535150087@stu.untar.ac.id                 </td>
+		</tr><tr class="textmode">
+			<td align="left">88</td><td align="left">535150088</td><td align="left">MUHAMMAD ADI NUGRAHA                                                                                </td><td align="left">TEKNIK INFORMATIKA       </td><td align="left">ISLAM</td><td align="left">081383483202   </td><td align="left">muhammad.535150088@stu.untar.ac.id                </td>
+		</tr><tr class="textmode">
+			<td align="left">89</td><td align="left">535150089</td><td align="left">NICHOLAS JOVIANTO                                                                                   </td><td align="left">TEKNIK INFORMATIKA       </td><td align="left">KATOLIK</td><td align="left">087777656471   </td><td align="left">nicholas.jovianto@gmail.com                       </td>
+		</tr><tr class="textmode">
+			<td align="left">90</td><td align="left">535150090</td><td align="left">ZALMI RAHMAT PUTRA                                                                                  </td><td align="left">TEKNIK INFORMATIKA       </td><td align="left">ISLAM</td><td align="left">089631297227   </td><td align="left">zalmi.535150090@stu.untar.ac.id                   </td>
+		</tr><tr class="textmode">
+			<td align="left">91</td><td align="left">535150091</td><td align="left">ANTHONY                                                                                             </td><td align="left">TEKNIK INFORMATIKA       </td><td align="left">PROTESTAN</td><td align="left">081260916871   </td><td align="left">anthony.535150091@stu.untar.ac.id                 </td>
+		</tr><tr class="textmode">
+			<td align="left">92</td><td align="left">535150092</td><td align="left">BRIAN JONES                                                                                         </td><td align="left">TEKNIK INFORMATIKA       </td><td align="left">PROTESTAN</td><td align="left">081808589046   </td><td align="left">brian.535150092@stu.untar.ac.id                   </td>
+		</tr><tr class="textmode">
+			<td align="left">93</td><td align="left">535150093</td><td align="left">AISAH NUR FITRIANI                                                                                  </td><td align="left">TEKNIK INFORMATIKA       </td><td align="left">ISLAM</td><td align="left">082122442443   </td><td align="left">aisah.535150093@stu.untar.ac.id                   </td>
+		</tr><tr class="textmode">
+			<td align="left">94</td><td align="left">535150094</td><td align="left">WILDA NAJMI HENTIHU                                                                                 </td><td align="left">TEKNIK INFORMATIKA       </td><td align="left">ISLAM</td><td align="left">085315558551   </td><td align="left">wilda.535150094@stu.untar.ac.id                   </td>
+		</tr><tr class="textmode">
+			<td align="left">95</td><td align="left">535150095</td><td align="left">CYNTHIA                                                                                             </td><td align="left">TEKNIK INFORMATIKA       </td><td align="left">PROTESTAN</td><td align="left">087888210695   </td><td align="left">rahardjo.cynthia@hotmail.com                      </td>
+		</tr>
+	</table>
+</div>

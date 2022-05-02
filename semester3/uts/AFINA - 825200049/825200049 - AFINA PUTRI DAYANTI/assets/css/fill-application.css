@@ -1,0 +1,63 @@
+#fill-application {
+    margin-top: -140px;
+}
+
+.container-fill-application {
+    width: fit-content;
+    margin: auto;
+}
+
+input {
+    width: 200px;
+    height: 40px;
+    border: 1px solid #ddd;
+}
+
+select {
+    width: 200px;
+    height: 47px;
+    border: 1px solid #ddd;
+    color: #7a7a7a;
+}
+
+.main-button {
+    margin: 40px auto auto;
+}
+
+.fill-your-application {
+    width: fit-content;
+    margin: auto;
+}
+
+.border-button {
+    margin: auto;
+    display: flex;
+    background-color: #ddd;
+    padding: 70px 0 0 0;
+    height: 130px;
+    margin-bottom: 140px;
+    border-radius: 15px;
+}
+
+.border-button .main-button2 {
+    border-radius: 10px;
+    padding: 15px;
+    width: 200;
+    margin: 0 20px;
+}
+
+.main-button2 a:hover {
+    background-color: #d3ac8b;
+}
+
+.main-button2 a {
+    /* display: inline-block; */
+    font-size: 15px;
+    padding: 12px 20px;
+    background-color: #97704f;
+    color: #fff;
+    text-align: center;
+    font-weight: 500;
+    transition: all 0.3s;
+    border-radius: 5px;
+}

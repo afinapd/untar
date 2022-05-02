@@ -1,0 +1,492 @@
+Oracle Data Dictionary Concept
+-------------------------------
+
+--make sure that the pluggable database is open
+alter pluggable database ORCLPDB open;
+
+--this will show all the tables in the CDB and PDBS
+select owner,table_name,con_id from cdb_tables
+order by 1,2;
+
+col owner format a30;
+col table_name format a30;
+
+alter pluggable database ORCLPDB close;
+
+select owner,table_name,con_id from cdb_tables
+order by 1,2;
+
+alter pluggable database ORCLPDB open;
+
+select owner,table_name,con_id from cdb_tables
+order by 1,2;
+
+
+--count of tables per container
+SELECT con_id, COUNT(table_name)
+FROM cdb_tables
+GROUP BY con_id;
+
+
+SELECT  COUNT(table_name)
+FROM DBA_tables;
+
+ALTER session set container=ORCLPDB;
+
+show con_name;
+
+SELECT  COUNT(table_name)
+FROM DBA_tables;
+
+alter session set container=cdb$root;
+
+show con_name;
+
+SELECT  COUNT(table_name)
+FROM DBA_tables;
+
+==================================================================
+
+Common users vs local users
+-----------------------------
+
+make sure that the pluggable database open:
+select con_id, name, open_mode from v$pdbs;
+
+if the orclpdb is mounted, then do this:
+alter pluggable database orclpdb open;
+
+show con_name;
+
+--make sure that all pluggable is opened
+select con_id,name,open_mode from v$pdbs
+
+alter pluggable database all open;
+
+select username,common,con_id from cdb_users
+order by username;
+
+col username format a30;
+
+select distinct(username) from cdb_users
+where common='YES'
+
+
+select username,common,con_id from cdb_users
+where common='NO'
+order by username;
+
+SHOW PARAMETER common_user_prefix;
+
+CREATE USER t1 IDentified by t1;
+
+CREATE USER C##t1 IDentified by welcome;
+
+select distinct(username) from cdb_users
+where common='YES';
+
+alter session set container=orclpdb;
+
+show con_name;
+
+create user khaled identified by khaled;
+
+select username,common,con_id from cdb_users
+where common='NO'
+order by username;
+
+===============================================================================
+
+Understanding Dynamic Performance Views
+-------------------------------------------
+
+show con_name;
+
+alter pluggable database orclpdb open;
+
+alter session set container=orclpdb;
+
+show con_name;
+
+select 
+oracle_username
+os_user_name,
+locked_mode,
+object_name,
+object_type
+from 
+v$locked_object a,dba_objects b
+where 
+a.object_id = b.object_id;
+
+--> no rows selected
+
+select * from hr.employees;
+--> table or view does not exist
+
+update hr.employees
+set salary=salary+1
+where employee_id=100;
+
+select 
+oracle_username
+os_user_name,
+locked_mode,
+object_name,
+object_type
+from 
+v$locked_object a,dba_objects b
+where 
+a.object_id = b.object_id
+
+rollback;
+
+select 
+oracle_username
+os_user_name,
+locked_mode,
+object_name,
+object_type
+from 
+v$locked_object a,dba_objects b
+where 
+a.object_id = b.object_id
+
+=====================================================================
+
+cdb_ & dba_ when you are inside a pluggable database
+--------------------------------------------------------
+
+show con_name;
+
+alter session set container=CDB$ROOT;
+
+select count(1) from cdb_tables;
+--> 4701
+
+select name, open_mode from v$pdbs;
+
+alter pluggable database orclpdb close;
+
+select count(1) from cdb_tables;
+--> 2353
+
+alter session set container=orclpdb;
+
+show con_name;
+
+select count(1) from cdb_tables;
+--> 2348
+
+alter session set container=CDB$ROOT;
+
+select count(1) from cdb_tables;
+--> 4701
+
+==============================================================
+
+Query the Data Files
+------------------------
+
+-- query the data files
+/*
+contains the actual users data, applications data, metadata. 
+( Tables, Rows, indexes ,procedures, views…) 
+If you lose Datafiles, you lose your database.
+*/
+
+show con_name
+
+select name,open_mode,con_id from v$pdbs;
+
+--make sure pluggable is open (if orclpdb mounted)
+alter pluggable database orclpdb open
+
+select file_name,file_id,tablespace_name,con_id 
+from cdb_data_files;
+
+Open Files, show the directory location:
+/u01/app/oracle/oradata/ORCL/orclpdb/
+
+Files - Other Locations - Computer then u01
+
+--same query but using dba, but here we dont have  con_id
+
+select file_name,file_id,tablespace_name
+from dba_data_files;
+
+--now let do
+alter session set container=orclpdb;
+
+show con_name;
+
+select file_name,file_id,tablespace_name
+from dba_data_files;
+
+select file_name,file_id,tablespace_name
+from cdb_data_files;
+
+--same results
+
+select file_name,file_id,tablespace_name
+from all_data_files;
+--error : table or view does not exist
+
+==============================================================
+
+Query the Temps Files
+---------------------
+
+-- query the temps files
+/*
+A tempfile is a file that is part of an Oracle database. 
+Tempfiles are used with TEMPORARY TABLESPACES
+
+Temporary tablespaces are used for special operations, particularly for sorting data results on disk and for 
+hash joins in SQL. For SQL with millions of rows returned, the sort operation is too large for the RAM 
+area and must occur on disk.  
+The temporary tablespace is where this takes place
+*/
+
+show con_name;
+
+alter session set container=cdb$root;
+
+select name,open_mode,con_id from v$pdbs;
+
+--make sure pluggable is open
+alter pluggable database orclpdb open;
+
+select file_name,file_id,tablespace_name,con_id 
+from cdb_temp_files;
+
+--same query but using dba , but here we dont have  con_id
+
+select file_name,file_id,tablespace_name
+from dba_temp_files;
+
+--now let do
+alter session set container=orclpdb;
+
+show con_name;
+
+select file_name,file_id,tablespace_name
+from dba_temp_files;
+
+==============================================================================
+
+V$DATABASE / v$version / v$instance
+----------------------------------------
+
+--V$DATABASE displays information about the database from the control file
+
+
+show con_name;
+
+alter session set container=CDB$ROOT;
+
+select name,cdb,con_id ,OPEN_MODE
+from V$DATABASE;
+
+show parameter db_name;
+
+--------------
+
+--query the oracle db  version
+select banner from v$version;
+
+--query the instance name
+
+select * from v$instance;
+
+show parameter instance_name;
+
+========================================================
+
+V$CONTAINERS / cdb_PDBS
+
+--V$CONTAINERS 
+--displays information about PDBs and the root associated with the current instance
+
+show con_name;
+
+select con_id,name,open_mode from V$CONTAINERS;
+
+alter session set container=orclpdb;
+
+select con_id,name,open_mode from V$CONTAINERS;
+
+alter session set container=cdb$root;
+
+show con_name;
+
+select pdb_id,pdb_name, status 
+from cdb_PDBS;
+
+col pdb_name format a10;
+
+select pdb_id,pdb_name, status 
+from cdb_PDBS;
+
+--the status column 
+/* 
+some important status
+NEW - The PDB has never been opened since it was created
+NORMAL - The PDB is ready to be used.
+UNPLUGGED - The PDB has been unplugged. The only operation that can be performed on it is DROP PLUGGABLE DATABASE.
+RELOCATING: The PDB is in the process of being relocated to a different CDB.
+RELOCATED: The PDB has been relocated to a different CDB.
+*/
+
+alter session set container=orclpdb;
+
+show con_name;
+
+select pdb_id,pdb_name, status 
+from cdb_PDBS;
+
+select pdb_id,pdb_name, status 
+from dba_PDBS;
+
+===============================================================================
+
+V$DATAFILE
+----------
+
+show con_name;
+
+select name,open_mode,con_id from v$pdbs;
+
+--make sure pluggable is open
+alter pluggable database orclpdb open;
+
+select file_name,file_id,tablespace_name,con_id 
+from cdb_data_files;
+
+select file#,name, ts#,con_id 
+from V$DATAFILE
+order by con_id;
+--Some V$ views are available even when the database is not fully open and running.
+
+alter pluggable database orclpdb close;
+
+select file#,name, ts#,con_id 
+from V$DATAFILE
+order by con_id;
+
+select file_name,file_id,tablespace_name,con_id 
+from cdb_data_files;
+
+alter session set container=orclpdb;
+
+select file#,name, ts#,con_id 
+from V$DATAFILE
+order by con_id;
+
+select file_name,file_id,tablespace_name
+from dba_data_files;
+
+show pdbs;
+
+===================================================================================
+
+cdb_tablespaces / V$TABLESPACE
+--------------------------------
+
+show con_name;
+
+alter session set container=cdb$root;
+
+alter pluggable database orclpdb open;
+
+select tablespace_name,block_size,status,contents,con_id 
+from cdb_tablespaces;
+
+select *
+from V$TABLESPACE;
+
+alter session set container=orclpdb;
+
+select tablespace_name,block_size,status,contents,con_id 
+from cdb_tablespaces;
+
+select tablespace_name,block_size,status,contents,con_id 
+from dba_tablespaces;
+
+select tablespace_name,block_size,status,contents
+from dba_tablespaces;
+
+select *
+from V$TABLESPACE;
+
+=============================================================================
+
+v$logfile / V$CONTROLFILE
+-------------------------
+
+alter session set container=cdb$root;
+
+SHOW con_name;
+
+alter pluggable database all open;
+
+select con_id,name,open_mode from v$containers;
+
+/*
+redo log files store all changes made to the database as they occur.
+The database maintains online redo log files to protect against data loss. 
+Specifically,after an instance failure.
+the online redo log files enable Oracle Database to recover
+committed data that it has not yet written to the data files.
+--we need minimum 2 redo log files
+--one is always available for wrtiting , while the other is being archived  
+very important note: redo log files exists in the whole instance, not for particular container 
+*/
+
+select * from v$logfile;
+
+col member format a35;
+
+/*
+Control files
+Stores metadata about the datafiles and online redo log files ( like names ,locations, and statuses ) 
+and this info is required by the database instance to open the database.
+very important note: Control files exists in the whole instance, not for particular container 
+*/
+
+select * from V$CONTROLFILE;
+
+===============================================================
+
+Pluggable Database Save State
+--------------------------------
+
+select name, open_mode from v$pdbs;
+
+desc v$pdbs;
+
+column name format a30;
+
+shutdown immediate;
+
+startup;
+
+column name format a30;
+
+select name, open_mode from v$pdbs;
+
+alter pluggable database orclpdb open;
+
+alter pluggable database orclpdb save state;
+
+shutdown immediate;
+
+startup;
+
+column name format a30;
+
+select name, open_mode from v$pdbs;
+
+
+
+

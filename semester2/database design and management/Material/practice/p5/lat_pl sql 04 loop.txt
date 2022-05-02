@@ -1,0 +1,168 @@
+soal latihan loop
+/*
+--1
+buat sebuah program untuk menampilkan data dari employee_id 101 s/d 105 berupa:
+- employee_id
+- last_name
+- salary
+
+dari table hr.employees, hitunglah dan tampilkan rata2 gajinya.
+
+--2 buat program faktorial
+
+contoh output:
+5! = 120 
+*/
+
+
+--jawaban
+
+--1 basic loop
+declare
+v_id hr.employees.employee_id%type;
+v_name hr.employees.last_name%type;
+v_sal hr.employees.salary%type;
+v_count number := 101;
+counter number := 0;
+jum number := 0;
+
+begin
+
+loop
+
+select employee_id, last_name, salary
+into v_id, v_name, v_sal
+from hr.employees
+where employee_id = v_count;
+dbms_output.put_line('id : ' || v_id || ', name : ' || v_name || 
+', salary : ' || v_sal);
+
+v_count := v_count + 1;
+counter := counter + 1;
+jum:= jum + v_sal;
+
+exit when v_count > 105;
+
+end loop;
+
+dbms_output.put_line( 'rata2 gaji : ' || jum / counter);
+
+end;
+/
+
+
+
+--1 while loop
+declare
+v_id hr.employees.employee_id%type;
+v_name hr.employees.last_name%type;
+v_sal hr.employees.salary%type;
+v_count number := 101;
+counter number := 0;
+jum number := 0;
+
+begin
+
+while v_count < 106 loop
+
+select employee_id, last_name, salary
+into v_id, v_name, v_sal
+from hr.employees
+where employee_id = v_count;
+dbms_output.put_line('id : ' || v_id || ', name : ' || v_name || 
+', salary : ' || v_sal);
+
+v_count := v_count + 1;
+counter := counter + 1;
+jum:= jum + v_sal;
+
+end loop;
+
+dbms_output.put_line( 'rata2 gaji : ' || jum / counter);
+
+end;
+/
+
+--1 for loop
+
+declare
+v_id hr.employees.employee_id%type;
+v_name hr.employees.last_name%type;
+v_sal hr.employees.salary%type;
+v_count number := 101;
+counter number := 0;
+jum number := 0;
+
+begin
+
+for i in v_count..105 loop
+
+select employee_id, last_name, salary
+into v_id, v_name, v_sal
+from hr.employees
+where employee_id = v_count;
+dbms_output.put_line('id : ' || v_id || ', name : ' || v_name || 
+', salary : ' || v_sal);
+
+v_count := v_count + 1;
+counter := counter + 1;
+jum:= jum + v_sal;
+
+end loop;
+
+dbms_output.put_line( 'rata2 gaji : ' || jum / counter);
+
+end;
+/
+
+
+--2
+
+--2 basic loop
+declare
+v_min number:= 1;
+v_max number:= &numb2;
+v_hasil number := 1;
+v_count number := 1;
+
+begin 
+loop
+v_hasil := v_hasil * v_count;
+v_count := v_count + 1; 
+exit when v_count > v_max; 
+end loop;
+dbms_output.put_line(v_max|| '!' || ' = ' || v_hasil);
+end;
+/
+
+--2 while loop
+declare
+v_max number:= &numb2;
+v_hasil number := 1;
+v_count number := 1;
+
+begin 
+while v_count <= v_max loop
+v_hasil := v_hasil * v_count;
+v_count := v_count + 1; 
+
+end loop;
+dbms_output.put_line(v_max|| '!' || ' = ' || v_hasil);
+end;
+/
+
+--2 for loop
+declare
+v_min number:= 1;
+v_max number:= &numb2;
+v_hasil number := 1;
+
+begin 
+for i in reverse v_min..v_max loop
+v_hasil := v_hasil * i;
+end loop;
+dbms_output.put_line(v_max|| '!' || ' = ' || v_hasil);
+end;
+/
+
+

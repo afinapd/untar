@@ -1,0 +1,280 @@
+Location of parameter file:
+Activities - Files - Other Locations - Computer
+/u01/app/oracle/dbs
+
+sqlplus / as sysdba
+
+Connected to an idle instance
+
+SQL> startup;
+
+SQL> show con_name;
+
+SQL> show user;
+
+SQL> show parameter block;
+
+Google - Oracle Database Reference 21c
+
+https://docs.oracle.com/en/database/oracle/oracle-database/21/refrn/index.html
+
+Initialization Parameters
+example: DB_NAME
+SESSIONS
+
+Alter session example
+=====================
+
+select name,value from V$PARAMETER order by name;
+
+select name,value,isses_modifiable , issys_modifiable , ispdb_modifiable  from V$PARAMETER where name ='nls_date_format';
+col name format a15;
+col value format a15;
+select name,value,isses_modifiable , issys_modifiable , ispdb_modifiable  from V$PARAMETER where name ='nls_date_format';
+
+select sysdate from dual;
+
+alter session set nls_date_format='dd-mm-yyyy';
+
+select name,value,isses_modifiable , issys_modifiable , ispdb_modifiable  from V$PARAMETER where name ='nls_date_format';
+
+select sysdate from dual;
+
+alter session set nls_date_format='dd-month-yyyy';
+
+select name,value,isses_modifiable , issys_modifiable , ispdb_modifiable  from V$PARAMETER where name ='nls_date_format';
+
+select sysdate from dual;
+
+--can you query all the para that we can change it on session level
+Select name,value,isses_modifiable , issys_modifiable , ispdb_modifiable from V$PARAMETER where isses_modifiable='TRUE';
+
+------------------------------------------------------
+
+v$parameter versus v$parameter2
+================================
+
+show con_name;
+
+select name, open_mode from v$pdbs;
+
+alter pluggable database all open;
+
+--V$PARAMETER show info about the PARAMETERs that are currently in effect for the session
+select name,value,isses_modifiable , issys_modifiable , ispdb_modifiable ,con_id from V$PARAMETER order by name;
+
+select name,value,isses_modifiable , issys_modifiable , ispdb_modifiable ,con_id from V$PARAMETER where name ='control_files';
+
+--note: when the issys_modifiable=FALSE, this mean it is static parameter
+--this mean it could be changed, but in Spfile only and need restart the DB using Spfile
+--when you see issys_modifiable=IMMEDIATE , changes can take effect IMMEDIATE
+--when you see issys_modifiable=DEFERRED , changes can take effect for future sessions
+
+--V$PARAMETER2 show info about the PARAMETERs that are currently in effect for the session
+--but it is more readable in case the value has many lines
+select name,value,isses_modifiable , issys_modifiable , ispdb_modifiable ,con_id from V$PARAMETER2 where name ='control_files';
+
+------------------------------------------------
+
+v$system_parameter versus v$system_parameter2
+===============================================
+
+/*
+V$SYSTEM_PARAMETER is the view which shows instance level parameters 
+(and these are what all new sessions inherit)
+ISDEFAULT Indicates whether the parameter is set to the default value (TRUE) 
+or the parameter value was specified in the parameter file (spfile or pfile) (FALSE) 
+*/
+
+select name,value,isses_modifiable , issys_modifiable , ispdb_modifiable ,ISDEFAULT,con_id from V$SYSTEM_PARAMETER order by name;
+
+Files - Other Locations
+/u01/app/oracle/dbs
+
+inittest.ora
+spfiletest.ora --> right-click then Open with Text Editor
+
+select name,value,isses_modifiable , issys_modifiable , ispdb_modifiable ,ISDEFAULT,con_id
+from V$SYSTEM_PARAMETER
+where ISDEFAULT='FALSE' 
+AND CON_ID=0
+order by name;
+
+select name,value,isses_modifiable , issys_modifiable , ispdb_modifiable ,ISDEFAULT,con_id
+from V$SYSTEM_PARAMETER
+where name='nls_date_format';
+
+alter session set nls_date_format='dd-mm-yyyy';
+
+select name,value,isses_modifiable , issys_modifiable , ispdb_modifiable ,con_id
+from V$SYSTEM_PARAMETER
+where name='nls_date_format';
+
+select name,value,isses_modifiable , issys_modifiable , ispdb_modifiable ,con_id
+from V$PARAMETER
+where name='nls_date_format';
+
+/*
+V$SYSTEM_PARAMETER2 is the view which shows instance level parameters 
+(and these are what all new sessions inherit)
+--but it is more readable in case the value has many lines
+*/
+
+select name,value,isses_modifiable , issys_modifiable , ispdb_modifiable ,con_id
+from V$SYSTEM_PARAMETER2
+where name ='control_files'
+
+--------------------------------------------
+
+Example: search order for a parameter file and creating pfile
+
+Files - Other Locations
+/u01/app/oracle/dbs
+
+right-click spfiletest.ora, rename to xyzspfiletest.ora
+
+Open Terminal
+sqlplus / as sysdba
+
+shutdown immediate;
+
+startup;
+
+ORA-01078: failure in processing system parameters
+ORA-01565: error in identifying file '/u01/app/oracle/dbs/spfiletest.ora'
+ORA-27037: unable to obtain file status
+Linux-x86_64 Error: 2: No such file or directory
+Additional information: 7
+
+Right-click xyzspfiletest.ora, rename back to spfiletest.ora
+
+SQL>startup;
+
+ORACLE instance started.
+
+Total System Global Area 1543503024 bytes
+Fixed Size		    9686192 bytes
+Variable Size		 1140850688 bytes
+Database Buffers	  385875968 bytes
+Redo Buffers		    7090176 bytes
+Database mounted.
+
+SQL> show parameter spfile;
+
+SQL> shutdown immediate;
+SQL> startup;
+SQL> show parameter spfile;
+
+---------------------------------------
+
+Alter system example (memory)
+-----------------------------
+
+SQL> show parameter max_idle_time;
+
+SQL> alter system set max_idle_time=30 scope=memory;
+
+SQL> show parameter max_idle_time;
+
+SQL> select value from v$parameter where name='max_idle_time';
+
+SQL> select value from v$system_parameter where name='max_idle_time';
+
+SQL> shutdown immediate;
+
+SQL> startup;
+
+SQL> show parameter max_idle_time;
+
+SQL> select value from v$system_parameter where name='max_idle_time';
+
+=====================================================
+
+Alter system example (spfile)
+---------------------------
+
+SQL> alter system set max_idle_time=50 scope=spfile;
+
+SQL> select value from v$system_parameter where name='max_idle_time';
+-----value 0
+
+open file spfiletest.ora
+see: max_idle_time=50
+
+SQL> shutdown immediate;
+
+SQL> startup;
+
+SQL> select value from v$system_parameter where name='max_idle_time';
+-----value 50
+
+=======================================================
+
+Alter system example (both)
+------------------------------
+
+SQL> alter system set max_idle_time=20 scope=both;
+
+open file spfiletest.ora
+see: max_idle_time=20
+
+SQL> alter system set max_idle_time=30 scope=both;
+
+SQL> alter system reset max_idle_time scope=both;
+
+open file spfiletest.ora
+see: there is no parameter max_idle_time
+
+SQL> alter system set max_idle_time=100 scope=both;
+
+open file spfiletest.ora
+see: max_idle_time=100
+
+================================================================
+
+Default scope in alter statement
+----------------------------------
+
+/*OPEN_CURSORS specifies the maximum number of open cursors 
+a session can have at once. 
+You can use this parameter to prevent a session from opening an excessive number of cursors.
+*/
+
+
+SQL> show con_name;
+
+SQL> select name,value,isses_modifiable , issys_modifiable , ispdb_modifiable ,con_id
+from V$PARAMETER
+where name='open_cursors';
+
+SQL> col name format a20;
+SQL> col value format a20;
+
+SQL> select name,value,isses_modifiable , issys_modifiable , ispdb_modifiable ,con_id
+from V$PARAMETER
+where name='open_cursors';
+
+SQL> select name,value,isses_modifiable , issys_modifiable , ispdb_modifiable ,ISDEFAULT,con_id
+from V$system_PARAMETER
+where name='open_cursors';
+
+SQL> show parameter spfile;
+
+SQL> alter system set open_cursors=301;  
+--same alter system set open_cursors=301 scope=both;
+
+SQL> select name,value,isses_modifiable , issys_modifiable , ispdb_modifiable ,ISDEFAULT,con_id
+from V$system_PARAMETER
+where name='open_cursors'
+
+Files - Other Locations
+/u01/app/oracle/dbs
+
+right-click spfiletest.ora, open with text editor
+see -- open_cursors = 301
+
+
+
+
+
+

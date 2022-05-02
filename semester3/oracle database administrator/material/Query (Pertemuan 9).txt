@@ -1,0 +1,421 @@
+--1 you have to connect sys as sysdba
+--2 when the DBA connect, it will be on root container db
+
+
+SQL> show con_name;
+
+SQL> alter session set container=orclpdb;
+
+SQL> show con_name;
+
+SQL> select username, account_status, common 
+from dba_users;
+
+--to see the priv map
+SQL> select * from SYSTEM_PRIVILEGE_MAP;
+
+--now lets create new user called demo
+
+--this will create user demo with password demo1234
+SQL> create user demo identified by demo1234; 
+-- he can not login yet
+
+--now these some sys priv
+SQL> grant create session to demo;
+
+SQL> grant create table to demo;
+-- you can do this also : grant create session,create table to demo
+
+SQL> grant unlimited tablespace to demo;
+
+SQL> grant create sequence to demo;
+
+SQL> grant create view to demo;
+
+SQL> grant create synonym to demo;
+
+--now connect to demo and do all the next
+
+--the user demo can know his privileges by using this query
+SQL> select * from session_privs;
+
+--now if he have create table privileges then he can insert,update,delete, 
+--select, alter, index on any table he create
+
+SQL> create table emp
+( empid number constraint emp_pk primary key,
+  ename varchar2(100)
+);
+
+SQL> insert into emp values (1,'budi');
+
+SQL> select * from emp;
+
+SQL> alter table emp 
+add (salary number);
+
+SQL> select * from emp;
+
+SQL> create sequence emp_s;
+
+--he can create index for the table he create 
+SQL> create index ename_ind on emp (ename);
+
+
+SQL> create or replace view emp_v
+as
+select empid, ename
+from emp;
+
+--now the user demo he want to change his password , because the dba create for 
+--his default password demo1234
+
+SQL> alter user demo identified by demo_green;
+
+SQL> select * from session_privs;
+
+SQL> select * from user_sys_privs;
+
+SQL> select * from user_tab_privs_recd
+order by 2;
+
+SQL> select * from user_col_privs_recd;
+
+SQL> select * from user_tab_privs_made;
+
+SQL> select * from user_col_privs_made;
+
+================================================================================
+
+SQL> create role manager;
+
+SQL> grant create table, create view, create sequence
+to manager;
+
+SQL> SELECT * FROM ROLE_SYS_PRIVS
+WHERE ROLE='MANAGER';
+
+SQL> CREATE USER budi identified by budi123;
+
+SQL> grant create session to budi;
+
+SQL> grant unlimited tablespace to budi;
+
+SQL> grant manager to budi;
+
+SQL> CREATE ROLE QONLY;
+
+SQL> GRANT SELECT ANY TABLE TO QONLY;
+
+SQL> GRANT QONLY TO AHMED;
+
+SQL> CREATE ROLE IUD_EMP;
+
+SQL> GRANT IUD_EMP TO BUDI;
+
+SQL> SELECT * FROM ROLE_TAB_PRIVS
+WHERE ROLE='IUD_EMP';
+
+--USER BUDI CONNECTION
+
+SQL> select * from session_privs;     
+
+SQL> select * from user_sys_privs;
+
+SQL> select * from user_role_privs;
+
+SQL> select * from role_sys_privs;
+
+SQL> SELECT * FROM ROLE_TAB_PRIVS
+WHERE ROLE='IUD_EMP'
+
+SQL> create table student
+( student_id number,
+  student_name varchar2(100)
+);
+
+SQL> grant select on
+student to public; 
+
+================================================================================
+
+SQL> show con_name;
+
+--all users in root are common
+SQL> select * from dba_users;
+
+--you can not create local user in the root
+SQL> create user jane identified by jane;
+
+SQL> show parameter common_user_prefix;
+
+SQL> create user c##jane identified by jane container=all; 
+--note container=all is optional
+
+--now let us give create session local only in the root
+SQL> grant create session to c##jane ;
+
+--now let us give create session common 
+
+SQL> grant create session to c##jane container=all;
+
+================================================================================
+
+SQL> show con_name;
+
+--all roles in root are common
+SQL> select * from dba_roles;
+
+--you can not create local role in the root
+
+SQL> create role test_role;
+
+SQL> show parameter common_user_prefix;
+
+SQL> create role c##test_role container=all; 
+
+SQL> grant create session to c##test_role container=all;
+
+SQL> grant create table to c##test_role container=all;
+
+SQL> create user c##dark identified by dark;
+
+SQL> grant c##test_role to c##dark container=all;
+
+SQL> create user c##kim identified by kim;
+
+SQL> alter session set container=orclpdb;
+
+SQL> grant c##test_role to c##kim;
+--now c##kim only can create session in orclpdb
+
+================================================================================
+
+SQL> show con_name;
+
+SQL> show user;
+
+SQL> select * from session_privs; --and see the count;
+
+SQL> show con_id;
+
+SQL> select * from V$TABLESPACE
+where con_id=1;
+
+SQL> create user c##copysis identified by copysis
+default tablespace users temporary tablespace temp account unlock;
+
+SQL> grant create session, dba,sysdba to c##copysis container=all; 
+
+SQL> select * from dba_users
+where username=upper('c##copysis');
+
+SQL> SELECT * FROM SESSION_PRIVS;
+
+SQL> select * from role_sys_privs
+where role='DBA';
+
+SQL> SELECT * FROM SESSION_PRIVS
+WHERE PRIVILEGE NOT IN (select PRIVILEGE from role_sys_privs where role='DBA' );
+
+================================================================================
+
+SQL> show con_name;
+
+SQL> show user;
+
+SQL> alter session set container=orclpdb;
+
+SQL> show con_name;
+
+SQL> show con_id;
+
+SQL> select * from V$TABLESPACE
+
+
+SQL> create user orclpdb_admin identified by orclpdb_admin
+default tablespace users temporary tablespace temp account unlock;
+
+SQL> grant create session, dba to orclpdb_admin;
+
+SQL> select * from dba_users
+where username=upper('orclpdb_admin');
+
+================================================================================
+
+SQL> show con_name;
+
+SQL> show user;
+
+SQL> alter session set container=orclpdb;
+
+SQL> show con_name;
+
+SQL> create role master_role;
+
+SQL> grant create session to master_role;
+
+SQL> grant create table to master_role;
+
+SQL> SELECT * FROM ROLE_SYS_PRIVS
+where role= upper('master_role');
+
+SQL> create role sub_master_role;
+grant create view to sub_master_role;
+
+SQL> grant sub_master_role to master_role;
+
+SQL> SELECT * FROM ROLE_SYS_PRIVS
+where role= upper('master_role');
+
+SQL> select * from DBA_role_PRIVS
+where GRANTEE=upper('master_role');
+
+SQL> SELECT * FROM ROLE_SYS_PRIVS
+where role= upper('SUB_MASTER_ROLE');
+
+SQL> create user bd111 identified by bd111;
+
+SQL> grant master_role to bd111;
+
+--connect the new user
+--do this: select * from session_privs;
+
+================================================================================
+
+/*
+create new pluggable PDB10 from the seed using DBCA
+make sure to make the admin user PDB10_ADMIN in the DBCA
+*/
+
+SQL> show con_name;
+
+SQL> show user;
+
+SQL> SELECT * FROM CDB_USERS
+WHERE USERNAME='PDB10_ADMIN';
+
+--NO SYS PRIVS dirict to PDB10_ADMIN
+SQL> select * from CDB_SYS_PRIVS
+where GRANTEE='PDB10_ADMIN';
+
+SQL> select * from CDB_role_PRIVS
+where GRANTEE='PDB10_ADMIN'; 
+-- so he has role called PDB_DBA
+
+SQL> ALTER SESSION SET CONTAINER=PDB10;
+
+SQL> SHOW CON_NAME;
+
+SQL> SELECT * FROM ROLE_SYS_PRIVS
+WHERE ROLE='PDB_DBA';
+--This contains sys priv granted to role  ( direct or using another role )
+
+SQL> select * from DBA_role_PRIVS
+where GRANTEE='PDB_DBA'; 
+
+SQL> SELECT * FROM ROLE_SYS_PRIVS
+WHERE ROLE='CONNECT';
+
+--connect using PDB10_ADMIN
+--select * from session_privs;
+
+================================================================================
+
+SQL> show con_name;
+
+
+SQL> select * from dba_PROFILES
+where PROFILE='DEFAULT';
+
+SQL> create profile C##GENERAL
+limit
+SESSIONS_PER_USER 4
+IDLE_TIME 15
+FAILED_LOGIN_ATTEMPTS 3
+PASSWORD_LIFE_TIME 180
+container=all;
+
+SQL> select * from DBA_PROFILES
+where PROFILE= upper('C##GENERAL');
+
+SQL> create user c##lord identified by lord container=all
+
+SQL> grant create session, create table, unlimited tablespace to c##lord container=all;
+
+SQL> select * from DBA_users
+where USERNAME= upper('c##lord');
+
+SQL> alter user c##lord profile C##GENERAL container=all;
+
+SQL> select * from DBA_users
+where USERNAME= upper('c##lord');
+
+================================================================================
+
+SQL> show con_name;
+
+SQL> alter session set container=orclpdb;
+
+SQL> show con_name;
+
+SQL> select * from dba_PROFILES
+where PROFILE='DEFAULT';
+
+SQL> create profile orclpdbprofile
+limit
+SESSIONS_PER_USER UNLIMITED
+IDLE_TIME UNLIMITED
+FAILED_LOGIN_ATTEMPTS 10
+PASSWORD_LIFE_TIME 180
+INACTIVE_ACCOUNT_TIME 10;
+
+SQL> create profile orclpdbprofile
+limit
+SESSIONS_PER_USER UNLIMITED
+IDLE_TIME UNLIMITED
+FAILED_LOGIN_ATTEMPTS 10
+PASSWORD_LIFE_TIME 180
+INACTIVE_ACCOUNT_TIME 15;
+
+SQL> select * from DBA_PROFILES
+where PROFILE= upper('orclpdbprofile');
+
+SQL> create user sara identified by sara profile orclpdbprofile;
+
+SQL> grant create session, create table, unlimited tablespace to sara;
+
+SQL> select * from DBA_users
+where USERNAME= upper('sara');
+
+================================================================================
+
+SQL> SHOW CON_NAME;
+
+SQL> select * from dba_objects
+where object_name like '%VERIFY%'
+AND OBJECT_TYPE='FUNCTION';
+
+SQL> ALTER SESSION SET CONTAINER=ORCLPDB;
+
+SQL> select * from dba_objects
+where object_name like '%VERIFY%'
+AND OBJECT_TYPE='FUNCTION';
+
+SQL> CREATE PROFILE TEST_PASS
+LIMIT
+PASSWORD_VERIFY_FUNCTION ORA12C_VERIFY_FUNCTION ;
+
+SQL> SELECT * FROM DBA_PROFILES
+WHERE PROFILE='TEST_PASS';
+
+--NOTE: WHEN U SEE DEFAULT, THIS MEAN IT WILL READ FROM THE DEFAULT PROFILE
+
+SQL> create user test100 identified by welcome  profile TEST_PASS; 
+
+SQL> create user test100 identified by welcome1234  profile TEST_PASS; 
+
+SQL> create user test100 identified by welcome1234#  profile TEST_PASS; 
+
+SQL> grant create session to test100;
+

@@ -1,0 +1,167 @@
+
+--1
+declare
+ v_myage number := &umur;
+ 
+ begin
+ 
+ if v_myage < 6 then
+ dbms_output.put_line(v_myage || ' tahun, maka balita.');
+ 
+ elsif v_myage between 6 and 12 then
+  dbms_output.put_line(v_myage || ' tahun, maka anak-anak.');
+  
+ elsif v_myage between 13 and 17 then
+  dbms_output.put_line(v_myage || ' tahun, maka remaja.');
+  
+ elsif v_myage between 18 and 55 then
+  dbms_output.put_line(v_myage || ' tahun, maka dewasa.');
+  
+  else
+   dbms_output.put_line(v_myage || ' tahun, maka lansia.');
+   
+  end if;
+  
+  end;
+  /
+
+
+
+
+--2
+declare
+ln emp.last_name%type;
+sal emp.salary%type;
+naik int;
+
+begin
+
+select last_name, salary into ln, sal
+from emp
+where employee_id = &x;
+
+if sal <15000 then
+naik := sal + (sal*0.10);
+dbms_output.put_line('Last Name : ' || ln);
+dbms_output.put_line('Salary telah dinaikan 10% dari ' || sal || ' menjadi ' || naik);
+
+else
+dbms_output.put_line('Last Name : ' || ln);
+dbms_output.put_line('Salary tidak dinaikan 10% dikarenakan salary sebesar ' || sal);
+
+end if;
+
+end;
+/
+
+
+--3
+ 
+   declare
+ v_myage number := &umur;
+ 
+ begin
+ 
+ case 
+when v_myage < 6 then
+ dbms_output.put_line(v_myage || ' tahun, maka balita.');
+ 
+ when v_myage between 6 and 12 then
+  dbms_output.put_line(v_myage || ' tahun, maka anak-anak.');
+  
+ when v_myage between 13 and 17 then
+  dbms_output.put_line(v_myage || ' tahun, maka remaja.');
+  
+ when v_myage between 18 and 55 then
+  dbms_output.put_line(v_myage || ' tahun, maka dewasa.');
+  
+  else
+   dbms_output.put_line(v_myage || ' tahun, maka lansia.');
+   
+  end case;
+  
+  end;
+  /
+
+declare
+ v_myage number := &umur;
+ ket varchar2(30);
+ 
+ begin
+ 
+ ket :=
+ case 
+when v_myage < 6 then 'tahun, maka balita.'
+ 
+ when v_myage between 6 and 12 then 'tahun, maka anak-anak.'
+  
+ when v_myage between 13 and 17 then 'tahun, maka remaja.'
+  
+ when v_myage between 18 and 55 then 'tahun, maka dewasa.'
+  
+  else 'tahun, maka lansia.'
+   
+  end;
+  dbms_output.put_line(v_myage || ' ' || ket);
+  end;
+  /
+
+declare
+ v_myage number := &umur;
+ ket varchar2(30);
+ 
+ begin
+ 
+ ket :=
+ case 
+when v_myage < 6 then 'tahun, maka balita.'
+ 
+ when v_myage between 6 and 12 then 'tahun, maka anak-anak.'
+  
+ when v_myage between 13 and 17 then 'tahun, maka remaja.'
+  
+ when v_myage between 18 and 55 then 'tahun, maka dewasa.'
+  
+  else 'tahun, maka lansia.'
+   
+  end;
+  dbms_output.put_line(v_myage || ' ' || ket);
+  end;
+  /
+
+
+--4
+
+declare
+ln emp.last_name%type;
+sal emp.salary%type;
+naik int;
+
+begin
+
+select last_name, salary into ln, sal
+from emp
+where employee_id = &x;
+
+case
+when sal <15000 then
+naik := sal + (sal*0.10);
+dbms_output.put_line('Last Name : ' || ln);
+dbms_output.put_line('Salary telah dinaikan 10% dari ' || sal || ' menjadi ' || naik);
+
+else
+dbms_output.put_line('Last Name : ' || ln);
+dbms_output.put_line('Salary tidak dinaikan 10% dikarenakan salary sebesar ' || sal);
+
+end case;
+
+end;
+/
+
+
+
+
+
+
+
+

@@ -1,0 +1,708 @@
+show user
+
+show con_name
+
+create tablespace ts1;
+
+
+SELECT DBMS_METADATA.GET_DDL('TABLESPACE','TS1') FROM dual;
+/*
+  CREATE TABLESPACE "TS1" DATAFILE 
+  SIZE 104857600
+  AUTOEXTEND ON NEXT 104857600 MAXSIZE 32767M
+  LOGGING ONLINE PERMANENT BLOCKSIZE 8192
+  EXTENT MANAGEMENT LOCAL AUTOALLOCATE DEFAULT 
+ NOCOMPRESS  SEGMENT SPACE MANAGEMENT AUTO
+ */
+ 
+
+select * from dba_tablespaces
+where tablespace_name='TS1' ;
+
+--REMEMBER THE RELATION 
+--TABLESPACE-SEGMENT-EXTENT-BLOCK
+
+CREATE USER alex identified by alex
+default tablespace ts1
+
+grant create session, create table, unlimited tablespace to alex;
+
+select * from dba_users
+where username='ALEX';
+
+CREATE TABLE ALEX.EMP ( EMP_ID NUMBER, NAME VARCHAR2(100), NOTE VARCHAR2(1000) );
+
+SELECT * FROM DBA_TABLES
+WHERE TABLE_NAME='EMP'
+AND OWNER='ALEX';
+
+SELECT * FROM DBA_SEGMENTS
+WHERE OWNER='ALEX'
+AND SEGMENT_NAME='EMP'; --SO ORACLE DID NOT CREATE SEGMENT, NO ROWS IN THE TABLE
+
+INSERT INTO ALEX.EMP VALUES (1,'KHALED','the best teacher ever : )')
+commit;
+
+SELECT * FROM DBA_SEGMENTS
+WHERE OWNER='ALEX'
+AND SEGMENT_NAME='EMP'; 
+
+
+select * from dba_extents
+where owner='ALEX'
+and  SEGMENT_NAME='EMP'; 
+
+--now let us insert 1000 rows
+
+begin
+ for i in 1..1000
+ loop
+ insert into ALEX.EMP values (i,'just test name', 'just test comments');
+ end loop;
+ commit;
+end;
+
+SELECT * FROM DBA_SEGMENTS
+WHERE OWNER='ALEX'
+AND SEGMENT_NAME='EMP'; 
+
+
+select * from dba_extents
+where owner='ALEX'
+and  SEGMENT_NAME='EMP'; 
+
+--now let us insert 1000000 rows
+
+begin
+ for i in 1..1000000
+ loop
+ insert into ALEX.EMP values (i,'just test name', 'just test comments');
+ end loop;
+ commit;
+end;
+
+
+SELECT * FROM DBA_SEGMENTS
+WHERE OWNER='ALEX'
+AND SEGMENT_NAME='EMP'; 
+
+
+select * from dba_extents
+where owner='ALEX'
+and  SEGMENT_NAME='EMP'; 
+
+select rowid,emp_id,name,note 
+from ALEX.emp
+where emp_id=1000000
+--example
+--rowid OOOOOOFFFBBBBBBRRR
+--OOOOOO object number
+--FFF Relative File Number
+--BBBBBB The data block number
+--RRR The row number
+
+
+delete from ALEX.EMP;
+commit;
+
+SELECT * FROM DBA_SEGMENTS
+WHERE OWNER='ALEX'
+AND SEGMENT_NAME='EMP'; 
+
+
+select * from dba_extents
+where owner='ALEX'
+and  SEGMENT_NAME='EMP'; 
+
+
+truncate table ALEX.EMP;
+
+
+SELECT * FROM DBA_SEGMENTS
+WHERE OWNER='ALEX'
+AND SEGMENT_NAME='EMP'; 
+
+
+select * from dba_extents
+where owner='ALEX'
+and  SEGMENT_NAME='EMP';
+
+=======================================================================================================
+
+show user
+show con_name
+
+create table dept
+(deptno NUMBER(2),
+ dept_name varchar2(100 )
+ );
+ 
+select * from dba_tables
+where table_name='DEPT';
+
+SELECT * FROM USER_SEGMENTS
+WHERE SEGMENT_NAME='DEPT';
+
+INSERT into dept values ( 1, 'IT Dept' );
+INSERT into dept values ( 2, 'FINANCE' );
+commit;
+
+SELECT * FROM USER_SEGMENTS
+WHERE SEGMENT_NAME='DEPT';
+
+create unique index dept_inx on DEPT(deptno);
+
+SELECT * FROM USER_SEGMENTS
+
+update dept
+set dept_name='XXXX'
+
+
+SELECT * FROM dba_SEGMENTS
+where owner='PDBTS_ADMIN'
+
+select a.sid, a.serial#, a.username, b.used_urec, b.used_ublk
+from   v$session a,
+       v$transaction b
+where  a.saddr = b.ses_addr
+order by b.used_ublk desc;
+--USED_UBLK = Number of undo blocks used 
+--USED_UREC = Number of undo records used
+
+ROLLBACK;
+
+select a.sid, a.serial#, a.username, b.used_urec, b.used_ublk
+from   v$session a,
+       v$transaction b
+where  a.saddr = b.ses_addr
+order by b.used_ublk desc;
+
+===============================================================================================================
+
+--DEFERRED_SEGMENT_CREATION
+
+show user;
+show con_name;
+
+show parameter DEFERRED_SEGMENT_CREATION
+
+--this mean the segment will created for the table
+--1 after you crate the table using DDL statement ( create table )
+--2 after you insert one record ( DML )
+
+create table country (id number, name varchar2(100) );
+
+select * from user_segments
+where segment_name= upper('country');
+
+insert into country values (1,'Jordan');
+
+select * from user_segments
+where segment_name= upper('country');
+
+--now let change DEFERRED_SEGMENT_CREATION to be false
+--you can do this by alter session / alter system
+--this will create the segment immidiate
+
+alter session set DEFERRED_SEGMENT_CREATION=false;
+
+show parameter DEFERRED_SEGMENT_CREATION
+
+create table jobs (id number, title varchar2(100) );
+
+select * from user_segments
+where segment_name= upper('jobs');
+
+--note
+--Deferred segment is the default for tables, indexes, and partitions
+
+--let do this now
+alter session set DEFERRED_SEGMENT_CREATION=true;
+
+--but we can do this also
+
+create table test ( n number )
+SEGMENT CREATION IMMEDIATE;
+
+select * from user_segments
+where segment_name= upper('test');
+
+
+
+create table test10 ( n number )
+SEGMENT CREATION DEFERRED;
+
+select * from user_segments
+where segment_name= upper('test10');
+
+============================================================================================================
+
+--Space-Saving Features (UNUSABLE index)
+show user;
+show con_name;
+
+show parameter DEFERRED_SEGMENT_CREATION
+
+create table employees
+( emp_id number,
+  fname varchar2(100),
+  lname varchar2(100),
+ constraint employees_pk primary key (emp_id)
+ );
+ 
+select * from user_tables
+where table_name='EMPLOYEES';
+
+SELECT * FROM USER_INDEXES
+
+select * from user_segments
+where segment_name IN ( 'EMPLOYEES','EMPLOYEES_PK' );
+
+insert into employees values (1,'khaled','alkhudari');
+commit;
+
+select * from employees
+
+
+select * from user_segments
+where segment_name IN ( 'EMPLOYEES','EMPLOYEES_PK' );
+
+create index fname_index on EMPLOYEES(fname) ;
+
+
+select * from user_segments
+where segment_name IN ( 'EMPLOYEES','EMPLOYEES_PK' ,'FNAME_INDEX');
+
+create index lname_index on EMPLOYEES(lname) UNUSABLE ;
+
+
+select * from user_segments
+where segment_name IN ( 'EMPLOYEES','EMPLOYEES_PK' ,'FNAME_INDEX','LNAME_INDEX');
+
+alter index LNAME_INDEX REBUILD
+
+
+select * from user_segments
+where segment_name IN ( 'EMPLOYEES','EMPLOYEES_PK' ,'FNAME_INDEX','LNAME_INDEX');
+
+==========================================================================================================
+
+--basic compression 
+--With basic compression, the Oracle Database server compresses data at the time of performing bulk load using
+--operations such as direct loads or CREATE TABLE AS SELECT
+--Is recommended for bulk loading data warehouses
+
+show user;
+show con_name;
+
+select * from dba_objects
+where rownum<10000;
+
+--case 1
+--no compression
+create table test_01
+as
+select * from dba_objects where rownum <= 10000;
+
+SELECT DBMS_METADATA.GET_DDL('TABLE','TEST_01') FROM dual;
+
+ANALYZE TABLE TEST_01 COMPUTE statistics
+
+select  blocks, pct_free , compression, compress_for
+from    user_tables
+where   table_name = 'TEST_01';
+
+
+--CASE 2
+--with basic compression enabled
+create table test_02 compress basic
+as
+select * from dba_objects where rownum <= 10000;
+
+ANALYZE TABLE TEST_02 COMPUTE statistics
+
+select  blocks, pct_free , compression, compress_for
+from    user_tables
+where   table_name = 'TEST_02';
+
+--CASE 3
+--Normal insert into empty table defined as compress basic ( no effects )
+
+create table test_03 compress basic
+as
+select * from dba_objects where 1=2
+
+select * from test_03
+
+insert into test_03
+select * from dba_objects where rownum <= 10000;
+commit;
+
+select  blocks, pct_free , compression, compress_for
+from    user_tables
+where   table_name = 'TEST_03';
+
+ANALYZE TABLE TEST_03 COMPUTE statistics
+
+select  blocks, pct_free , compression, compress_for
+from    user_tables
+where   table_name = 'TEST_03';
+
+
+--4. Direct path insert into empty table defined as compressed
+create table TEST_04 compress basic
+as
+select * from dba_objects where rownum = 0;
+
+select * from TEST_04
+
+insert /*+ append */ into TEST_04 select * from dba_objects where rownum <= 10000
+/*
+The APPEND hint tells the optimizer to perform a direct-path insert, which improves the 
+performance of INSERT .. SELECT operations for a number of reasons:
+
+Data is appended to the end of the table, rather than attempting to use existing free space within the table.
+Data is written directly to the data files, by-passing the buffer cache.
+
+*/
+
+ANALYZE TABLE TEST_04 COMPUTE statistics
+
+select  blocks, pct_free , compression, compress_for
+from    user_tables
+where   table_name = 'TEST_04';
+
+
+--case 5
+--without compression, then change to compressed
+
+create table test_05
+as
+select * from dba_objects where rownum <= 10000;
+
+select  blocks, pct_free , compression, compress_for
+from    user_tables
+where   table_name = 'TEST_05';
+
+alter table test_05 compress basic; 
+
+
+select  blocks, pct_free , compression, compress_for
+from    user_tables
+where   table_name = 'TEST_05';
+
+
+alter table test_05 move
+
+ANALYZE TABLE TEST_05 COMPUTE statistics
+
+select  blocks, pct_free , compression, compress_for
+from    user_tables
+where   table_name = 'TEST_05';
+
+
+============================================================================================================
+
+--Advanced row compression
+/*
+Rows inserted with or without using direct-path insert and updated rows 
+are compressed using advanced row compression.
+
+Is enabled with CREATE TABLE … ROW STORE COMPRESS ADVANCED
+Is recommended for active OLTP environments
+
+With advanced row compression, duplicate values in the rows and columns in a data block are stored once 
+at the beginning of the block
+
+note 1:
+ROW STORE COMPRESS ADVANCED and COMPRESS BASIC are not supported for tables with more than 255
+note 2: You cannot drop a column from a table that is compressed for direct-load operations, 
+although you can set such a column as unused.
+*/
+
+create table test_06
+as
+select * from dba_objects where rownum <= 20000;
+
+ANALYZE TABLE test_06 COMPUTE statistics
+
+select  blocks, pct_free , compression, compress_for
+from    user_tables
+where   table_name = 'TEST_06';
+
+-------------------------------------
+
+create table test_07 ROW STORE COMPRESS ADVANCED
+as
+select * from dba_objects where rownum <= 20000;
+
+ANALYZE TABLE test_07 COMPUTE statistics
+
+select  blocks, pct_free , compression, compress_for
+from    user_tables
+where   table_name = 'TEST_07';
+
+------------------------------------------
+
+--not let us try normal insert
+
+create table test_08 ROW STORE COMPRESS ADVANCED
+as
+select * from dba_objects where rownum = 0;
+
+select * from test_08
+
+insert into test_08
+select * from dba_objects where rownum <= 20000;
+commit;
+
+
+ANALYZE TABLE test_08 COMPUTE statistics
+
+select  blocks, pct_free , compression, compress_for
+from    user_tables
+where   table_name = 'TEST_08';
+
+=============================================================================================================
+
+show user;
+show con_name;
+
+CREATE TABLESPACE tbsalert
+DATAFILE '/u01/app/oracle/oradata/ORCL/pdbts/tbsalert.dbf'
+SIZE 50M  LOGGING EXTENT MANAGEMENT LOCAL
+SEGMENT SPACE MANAGEMENT AUTO;
+
+select * from dba_data_files
+where TABLESPACE_NAME='TBSALERT'; --52428800
+
+select * from dba_free_space
+where TABLESPACE_NAME='TBSALERT';--51380224
+
+
+SELECT df.tablespace_name tablespace, fs.bytes free, df.bytes, 
+fs.bytes*100/ df.bytes PCT_FREE
+FROM dba_data_files df ,dba_free_space fs
+WHERE df.tablespace_name = fs.tablespace_name
+AND df.tablespace_name = 'TBSALERT';
+
+begin
+DBMS_SERVER_ALERT.SET_THRESHOLD( 
+metrics_id => dbms_server_alert.tablespace_pct_full,    
+warning_operator =>DBMS_SERVER_ALERT.OPERATOR_GE, 
+warning_value => '55', 
+critical_operator =>DBMS_SERVER_ALERT.OPERATOR_GE, 
+critical_value => '70', 
+observation_period => 1,
+consecutive_occurrences => 1, 
+instance_name => 'orcl', 
+object_type =>DBMS_SERVER_ALERT.OBJECT_TYPE_TABLESPACE, 
+object_name => 'TBSALERT');
+end;
+
+SELECT warning_value, critical_value
+FROM dba_thresholds 
+WHERE object_name='TBSALERT';
+
+SELECT * FROM dba_outstanding_alerts
+ WHERE object_name='TBSALERT';
+
+create table test100 ( emp_id number, name varchar2(100) )
+ tablespace TBSALERT;
+ 
+ begin
+ for i in 1..1000000
+ loop
+ insert into test100 values ( i, 'any dummy name' );
+ end loop;
+ commit;
+ end;
+ 
+SELECT df.tablespace_name tablespace, fs.bytes free, df.bytes, 
+fs.bytes*100/ df.bytes PCT_FREE
+FROM dba_data_files df ,dba_free_space fs
+WHERE df.tablespace_name = fs.tablespace_name
+AND df.tablespace_name = 'TBSALERT';
+
+--Wait a few minutes. 10-15
+SELECT reason, message_type , message_level
+FROM dba_outstanding_alerts
+WHERE object_name='TBSALERT';
+
+==========================================================================================================
+
+show user;
+show con_name;
+
+drop TABLESPACE tbsalert INCLUDING CONTENTS and DATAFILES;
+
+CREATE TABLESPACE tbsalert
+DATAFILE '/u01/app/oracle/oradata/ORCL/pdbts/tbsalert.dbf'
+SIZE 50M  LOGGING EXTENT MANAGEMENT LOCAL
+SEGMENT SPACE MANAGEMENT AUTO;
+
+
+SELECT df.tablespace_name tablespace, fs.bytes free, df.bytes, 
+fs.bytes*100/ df.bytes PCT_FREE
+FROM dba_data_files df ,dba_free_space fs
+WHERE df.tablespace_name = fs.tablespace_name
+AND df.tablespace_name = 'TBSALERT';
+
+
+create table test100 ( emp_id number, name varchar2(100) )
+ tablespace TBSALERT;
+ 
+ begin
+ for i in 1..1000000
+ loop
+ insert into test100 values ( i, 'any dummy name' );
+ end loop;
+ commit;
+ end;
+ 
+SELECT df.tablespace_name tablespace, fs.bytes free, df.bytes, 
+fs.bytes*100/ df.bytes PCT_FREE
+FROM dba_data_files df ,dba_free_space fs
+WHERE df.tablespace_name = fs.tablespace_name
+AND df.tablespace_name = 'TBSALERT';
+
+delete from test100;
+commit;
+
+SELECT df.tablespace_name tablespace, fs.bytes free, df.bytes, 
+fs.bytes*100/ df.bytes PCT_FREE
+FROM dba_data_files df ,dba_free_space fs
+WHERE df.tablespace_name = fs.tablespace_name
+AND df.tablespace_name = 'TBSALERT';
+
+
+--Create a Segment Advisor Task
+ DECLARE
+ tname VARCHAR2(128) := 'my_seg_task3';
+ tname_desc VARCHAR2(128) := 'Get shrink advice for segments in TBSALERT';
+ task_id NUMBER;
+ object_id NUMBER;
+ objectname VARCHAR2(100);
+ objecttype VARCHAR2(100);
+ BEGIN
+ dbms_advisor.create_task('Segment Advisor', task_id,tname,tname_desc,NULL);---select * from DBA_ADVISOR_DEFINITIONS
+ dbms_advisor.create_object(tname,'TABLESPACE','TBSALERT',' ',' ',NULL, ' ',object_id) ;
+ dbms_advisor.set_task_parameter(tname,'RECOMMEND_ALL','TRUE');
+ END;
+
+--Execute the task.
+DECLARE
+tname VARCHAR2(128) := 'my_seg_task3';
+BEGIN
+dbms_advisor.EXECUTE_TASK(tname);
+END;
+
+SELECT DESCRIPTION FROM dba_advisor_tasks WHERE TASK_NAME='my_seg_task3';
+
+
+SELECT attr1, attr2, message
+FROM dba_advisor_findings f, dba_advisor_objects o
+ WHERE f.task_name = o.task_name 
+ AND f.object_id = o.object_id 
+ AND f.task_name = 'my_seg_task3';
+
+
+alter table test100 enable row movement;
+
+ALTER TABLE test100 SHRINK SPACE;
+
+SELECT df.tablespace_name tablespace, fs.bytes free, df.bytes, 
+fs.bytes*100/ df.bytes PCT_FREE
+FROM dba_data_files df ,dba_free_space fs
+WHERE df.tablespace_name = fs.tablespace_name
+AND df.tablespace_name = 'TBSALERT';
+
+=============================================================================================================
+
+/*
+Managing Resumable Space Allocation
+A resumable statement:
+1- Enables you to suspend large operations instead of receiving an error
+2- Gives you a chance to fix the problem while the operation is suspended, rather
+than starting over
+3-Is suspended for the following conditions:
+>>Out of space
+>>Maximum extents reached
+>>Space quota exceeded
+4-Can be suspended and resumed multiple times
+*/
+
+
+show user;
+show con_name;
+
+drop TABLESPACE tbsalert INCLUDING CONTENTS and DATAFILES;
+
+CREATE TABLESPACE tbsalert
+DATAFILE '/u01/app/oracle/oradata/ORCL/pdbts/tbsalert.dbf'
+SIZE 10M  LOGGING EXTENT MANAGEMENT LOCAL
+SEGMENT SPACE MANAGEMENT AUTO;
+
+create table test100 ( emp_id number, name varchar2(100) )
+ tablespace TBSALERT;
+ 
+ begin
+ for i in 1..400000
+ loop
+ insert into test100 values ( i, 'any dummy name' );
+  commit;
+ end loop;
+end;
+ 
+ select * from test100
+ 
+ /*
+ A statement executes in resumable mode only if its session has been enabled by
+one of the following actions:
+1- The RESUMABLE_TIMEOUT initialization parameter is set to a nonzero value.
+2- An ALTER SESSION ENABLE RESUMABLE statement is issued
+*/
+
+ALTER SESSION ENABLE RESUMABLE     
+ 
+ truncate table test100;
+ 
+ begin
+ for i in 1..400000
+ loop
+ insert into test100 values ( i, 'any dummy name' );
+  commit;
+ end loop;
+end;
+ 
+ --the script will be suspend 7,200 seconds=2 hours. ( this the default )
+ --you can do ALTER SESSION ENABLE RESUMABLE TIMEOUT 3600
+ --now oracle will not give us any message that this script has been suspend
+ --but we can see it as DBA. open new session and do this
+ /*
+ select * from dba_resumable;
+
+SELECT file_name, autoextensible FROM dba_data_files WHERE
+tablespace_name='TBSALERT';
+
+ALTER DATABASE DATAFILE
+'/u01/app/oracle/oradata/ORCL/pdbts/tbsalert.dbf'
+AUTOEXTEND ON MAXSIZE unlimited;
+
+SELECT file_name, autoextensible FROM dba_data_files WHERE
+tablespace_name='TBSALERT';
+
+--WAIT until NO ROWS retrived by THIS QUERY
+select * from dba_resumable;
+
+select count(1) from test100;
+*/
+
+
+ 
+
+
+
+
+
+ 

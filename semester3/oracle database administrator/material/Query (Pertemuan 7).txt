@@ -1,0 +1,198 @@
+/*OPEN_CURSORS specifies the maximum number of open cursors a session can have at once. 
+You can use this parameter to prevent a session from opening an excessive number of cursors.
+*/
+
+show con_name;
+
+select name, value, isses_modifiable, issys_modifiable, ispdb_modifiable, con_id
+from V$PARAMETER
+where name='open_cursors';
+
+col name format a15;
+col value format a15;
+
+select name, value, isses_modifiable, issys_modifiable, ispdb_modifiable, con_id
+from V$PARAMETER
+where name='open_cursors';
+
+select name, value, isses_modifiable, issys_modifiable, ispdb_modifiable, ISDEFAULT, con_id
+from V$SYSTEM_PARAMETER
+where name='open_cursors';
+
+show parameter spfile;
+
+alter system set open_cursors=302;  --same alter system set open_cursors=302 scope=both;
+
+select name, value, isses_modifiable, issys_modifiable, ispdb_modifiable, ISDEFAULT, con_id
+from V$SYSTEM_PARAMETER
+where name='open_cursors';
+
+Activities - Files - Other Locations - Computer
+/u01/app/oracle/dbs
+right click spfiletest.ora --> check the value of open_cursors 
+
+================================================================================================
+
+CONTAINER clause in alter system
+----------------------------------
+
+show con_name;
+
+select name, value, isses_modifiable, issys_modifiable, ispdb_modifiable , ISDEFAULT, con_id
+from V$SYSTEM_PARAMETER
+where name='open_cursors';
+
+--i have one record, and the value of ispdb_modifiable=true
+--this mean PDBs inherit initialization parameter values from the root
+--let us see
+
+alter system set open_cursors=400 container=current; --ALL also will be the same in this case
+
+select name, value, isses_modifiable, issys_modifiable, ispdb_modifiable, ISDEFAULT, con_id
+from V$SYSTEM_PARAMETER
+where name='open_cursors';
+
+alter pluggable database all open;
+alter session set container=orclpdb;
+show con_name;
+
+select name, value, isses_modifiable, issys_modifiable, ispdb_modifiable, ISDEFAULT, con_id
+from V$SYSTEM_PARAMETER
+where name='open_cursors';
+
+alter system set open_cursors=500 container=current; --you can use ALL here  
+
+select name, value, isses_modifiable, issys_modifiable, ispdb_modifiable, ISDEFAULT, con_id
+from V$SYSTEM_PARAMETER
+where name='open_cursors';
+
+alter session set container=cdb$root;
+
+select name, value, isses_modifiable, issys_modifiable, ispdb_modifiable, ISDEFAULT, con_id
+from V$SYSTEM_PARAMETER
+where name='open_cursors';
+
+--now i will do this 
+alter system set open_cursors=410 container=current; --now only the root will be effected 
+
+select name, value, isses_modifiable, issys_modifiable, ispdb_modifiable, ISDEFAULT, con_id
+from V$SYSTEM_PARAMETER
+where name='open_cursors';
+
+
+--now i will do this 
+alter system set open_cursors=410 container=all; --this will remove the setup for the pluggable
+
+select name, value, isses_modifiable, issys_modifiable, ispdb_modifiable, ISDEFAULT, con_id
+from V$SYSTEM_PARAMETER
+where name='open_cursors';
+
+================================================================================================
+
+Automatic Diagnostic Repository
+--------------------------------
+
+$ echo $ORACLE_BASE
+$ sqlplus / as sysdba
+
+show parameter dia;
+
+Acitivities - File - Other Locations - Computer
+/u01/app/oracle --> see diag directory
+diag/rdbms/orcl/test
+there are some directories, e.g., alert, incident, trace, ...
+
+================================================================================================
+
+Alert log
+---------
+
+col name format a25;
+col value format a50;
+
+select name, value from v$diag_info;
+
+/u01/app/oracle/diag/rdbms/orcl/test/alert
+--- there is one file, i.e., log.xml
+--- open with Text Editor
+Ctrl - F --> type Alter database
+
+/u01/app/oracle/diag/rdbms/orcl/test/alert
+alert.test.log --> right click - open with text editor
+Ctrl - F --> shutdown 
+Ctrl - F --> System parameters with
+
+================================================================================================
+
+View alert log using ADRCI
+--------------------------
+
+$ cd Desktop
+$ touch hai.txt
+$ vi hai.txt
+press Insert
+hai
+hai
+HAI
+HAI
+hai
+hai
+hai
+budi
+
+Esc ?hai
+
+Esc :wq Enter
+
+/u01/app/oracle/diag/rdbms/orcl/test
+Right click -- Open in Terminal
+$adrci
+
+adrci> set HOMEPATH diag/rdbms/orcl/test
+
+
+adrci> select sizep_policy from adr_control_aux
+
+18446744073709551615
+
+adrci> select shortp_policy, longp_policy from adr_control;
+
+SHORTP_POLICY        LONGP_POLICY         
+-------------------- -------------------- 
+720                  8760  
+
+
+
+adrci> estimate ( sizep_policy =200000000) ;
+
+adrci> estimate ( shortp_policy =192, longp_policy=192 ) ;
+
+ADRCI> set control (SHORTP_POLICY = 192)
+ADRCI> set control (LONGP_POLICY = 192)
+ADRCI> set control (SIZEP_POLICY = 8559020)
+
+===================================================================================================
+
+--V$SPPARAMETER
+
+show con_name;
+
+select name, value, isses_modifiable, issys_modifiable, ispdb_modifiable, ISDEFAULT, con_id
+from V$SYSTEM_PARAMETER
+where name='open_cursors';
+
+alter system set open_cursors=310 container=all scope=memory;
+
+select name, value, isses_modifiable, issys_modifiable, ispdb_modifiable, ISDEFAULT, con_id
+from V$SYSTEM_PARAMETER
+where name='open_cursors';
+
+
+/*
+V$SPPARAMETER displays information about the contents of the server parameter file. 
+If a server parameter file was not used to start the instance, 
+then each row of the view will contain FALSE in the ISSPECIFIED column
+*/
+
+select * from V$SPPARAMETER
+where name='open_cursors';

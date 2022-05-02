@@ -1,0 +1,56 @@
+#schedule {
+  padding: 0px 0px 140px 0px;
+  background-image: url(../images/schedule-bg.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#schedule .filters ul li:after {
+  content: "/";
+  margin-left: 10px;
+  color: #fff;
+}
+
+.dark-bg h2 {
+  color: #fff;
+}
+
+.dark-bg p {
+  color: #fff;
+}
+
+#schedule .filters {
+  margin-bottom: 40px;
+}
+
+#schedule .filters ul {
+  padding: 0;
+  text-align: center;
+}
+
+#schedule .filters ul li.active a,
+#schedule .filters ul li a:hover {
+  color: #d3ac8b;
+}
+
+#schedule .filters ul li a {
+  color: #fff;
+}
+
+#schedule .filters ul li {
+  list-style: none;
+  display: inline;
+  cursor: pointer;
+  position: relative;
+  margin-right: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #fff;
+  text-transform: capitalize;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}

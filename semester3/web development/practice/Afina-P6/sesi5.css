@@ -1,0 +1,131 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: #fff8dc;
+  padding: 15px;
+  font-size: 18px;
+}
+
+form {
+  background-color: #f5deb3;
+  padding: 25px;
+  width: 600px;
+  margin: auto;
+  border: 2px solid #8b4513;
+  border-radius: 7px;
+}
+
+.item-form {
+  background-color: #d2b48c;
+  padding: 15px;
+  border: 1px solid #8b4513;
+  border-radius: 7px;
+  overflow: hidden;
+}
+
+.item-form .form1 {
+  float: left;
+  margin-right: 30px;
+}
+
+.item-form .form1 label {
+  display: block;
+  line-height: 30px;
+}
+
+.item-form .form2 input {
+  line-height: 20px;
+  width: 300px;
+  margin: 4px;
+}
+
+.item-form .form2 input.inputText {
+  padding: 0 0 0 10px;
+}
+
+.item-form .form2 input.inputText:hover {
+  background-color: #fff8dc;
+  border-radius: 2px;
+  font-size: 15px;
+  border: 1px solid #8b4513;
+}
+
+fieldset {
+  border: 1px solid #8b4513;
+  background-color: #d2b48c;
+  border-radius: 5px;
+  padding: 10px;
+  width: 300px;
+}
+
+fieldset legend {
+  background-color: #8b4513;
+  color: white;
+  padding: 3px 10px;
+  border-radius: 5px;
+  box-shadow: 0 3px #fff8dc;
+  width: 200px;
+  margin-left: 10px;
+}
+
+select {
+  width: 150px;
+  font-size: 15px;
+  background-color: #d2b48c;
+  padding: 7px;
+  border: 1px solid #8b4513;
+  border-radius: 4px;
+}
+
+textarea {
+  display: block;
+  background-color: white;
+  border: 1px solid #8b4513;
+}
+
+.tool {
+  position: relative;
+}
+
+.tool .tips {
+  display: inline;
+}
+
+.tool .tips span {
+  display: none;
+}
+
+.tips:hover span {
+  display: inline-block;
+  background-color: #d2b48c;
+  color: black;
+  padding: 10px;
+  font-size: 12px;
+}
+
+input[type="password"] {
+  padding: 8px;
+  margin-left: 10px;
+  background-color: white;
+  border: 1px solid #8b4513;
+}
+
+input[type="submit"],
+button[type="button"] {
+  padding: 8px;
+  background-color: #d2b48c;
+  border: 1px solid #8b4513;
+}
+
+input[type="submit"]:hover,
+button[type="button"]:hover {
+  color: white;
+  background-color: #8b4513;
+}
+
+.tool button:hover {
+  transition: background 2s ease-in-out;
+}

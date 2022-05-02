@@ -1,0 +1,30 @@
+Latihan soal Exception:
+
+1.	CREATE TABLE excep_emps  AS SELECT * FROM employees;
+2.	Jalankan syntax di bawah ini dan gunakan department_id =40, apa hasilnya dan jelaskan!
+
+	DECLARE   
+	v_dept_id  excep_emps.department_id%TYPE;   
+	v_count       NUMBER;  
+	BEGIN   
+	v_dept_id := 40;   
+	SELECT COUNT(*) INTO v_count     
+	FROM excep_emps     WHERE department_id = v_dept_id;   
+
+	DBMS_OUTPUT.PUT_LINE('There are ' || v_count || ' employees');  
+ 
+	DELETE FROM excep_emps     WHERE department_id = v_dept_id;
+   
+	DBMS_OUTPUT.PUT_LINE(SQL%ROWCOUNT || ' employees were deleted');  
+	ROLLBACK; 
+	END;
+
+3.	Ubah syntax di atas dengan menambahkan 2 exception, sebuah exception untuk mengatasi 
+	jika SELECT menghasilkan 0 baris data, dan sebuah exception untuk jika tidak ada data 
+	yang terhapus (DELETEd). Deklarasikan EXCEPTION dan RAISE secara explicit 
+	(bukan menggunakan RAISE_APPLICATION_ERROR). 
+	Test program menggunakan department_id 40. 
+
+4.	Modifikasi jawaban no. 3 untuk mengubah exception menggukan (RAISE_APPLICATION_ERROR). 
+	Gunakan error number -20203 dan -20204. 
+

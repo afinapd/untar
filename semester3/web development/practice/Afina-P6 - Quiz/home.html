@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>WISATAKU</title>
+    <link href="assets/logo.ico" rel="shortcut icon" />
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <link href="css/menu.css" rel="stylesheet" type="text/css" />
+    <link href="css/form.css" rel="stylesheet" type="text/css" />
+    <link href="css/table.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <div class="left">
+          <img src="assets/borobudur.jpg" />
+        </div>
+        <div class="right">
+          <h2>WISATA JAWA</h2>
+          <h2>Wisata Alam, Pantai, Budaya, dan Realigi</h2>
+          <p>Telusuri bersama kami</p>
+        </div>
+      </header>
+      <menu>
+        <ul>
+          <li class="selected"><a href="home.html">Home</a></li>
+          <li>
+            <a href="news.html">News</a>
+            <ul>
+              <li><a href="#">Tourism News</a></li>
+              <li><a href="#">Public News</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="destination.html">Destination</a>
+            <ul>
+              <li>
+                <a href="#">Central Java</a>
+                <ul>
+                  <li><a href="#">Semarang</a></li>
+                  <li><a href="#">Magelang</a></li>
+                  <li><a href="#">Solo</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="#">Yogyakarta</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="hotel.html">Hotel</a>
+            <ul>
+              <li><a href="#">Ambarukmo</a></li>
+            </ul>
+          </li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </menu>
+      <article>
+        <div class="left">
+          <h1>Tentang Wisataku</h1>
+          <p>
+            <b>Lorem Ipsum</b> is simply dummy text of the printing and
+            typesetting industry. Lorem Ipsum has been the industry's standard
+            dummy text ever since the 1500s, when an unknown printer took a
+            galley of type and scrambled it to make a type specimen book. It has
+            survived not only five centuries, but also the leap into electronic
+            typesetting, remaining essentially unchanged. It was popularised in
+            the 1960s with the release of Letraset sheets containing Lorem Ipsum
+            passages, and more recently with desktop publishing software like
+            Aldus PageMaker including versions of Lorem Ipsum.
+          </p>
+          <div class="left-center">
+            <h1>Lorem Ipsum</h1>
+            <p>
+              <i
+                >Neque porro quisquam est qui dolorem ipsum quia dolor sit amet,
+                consectetur, adipisci velit...</i
+              >
+            </p>
+          </div>
+          <div class="left-bottom">
+            <h1>Big Buck Bunny</h1>
+            <iframe
+              src="https://www.youtube.com/embed/YqPp4HCNHE4"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          </div>
+          <div class="left-buttom">
+            <form>
+              <div class="item-form">
+                <div class="form1">
+                  <label for="FirstName">First Name</label>
+                  <label for="FullName">Full Name</label>
+                  <label for="Address">Address</label>
+                </div>
+                <div class="form2">
+                  <input
+                    type="text"
+                    class="inputText"
+                    id="FirstName"
+                    placeholder="Enter Your First Name"
+                    name=""
+                  /><br />
+                  <input
+                    type="text"
+                    class="inputText"
+                    id="FullName"
+                    placeholder="Enter Your Full Name"
+                    name=""
+                  /><br />
+                  <input
+                    type="text"
+                    class="inputText"
+                    id="Address"
+                    placeholder="Enter Your Address"
+                    name=""
+                  />
+                </div>
+              </div>
+              <br />
+              <br />
+              <fieldset>
+                <legend>Gender</legend>
+                <input
+                  type="radio"
+                  class="radioCheck"
+                  id="MaleId"
+                  name="gender"
+                  checked
+                />
+                <label for="MaleId">Male</label><br />
+                <input
+                  type="radio"
+                  class="radioCheck"
+                  id="FemaleId"
+                  name="gender"
+                />
+                <label for="FemaleId">Female</label>
+              </fieldset>
+              <br />
+              <br />
+              <fieldset>
+                <legend>Favorite Sports</legend>
+                <input
+                  type="checkbox"
+                  class="radioCheck"
+                  id="VolleyballId"
+                  name=""
+                />
+                <label for="VolleyballId">Volleyball</label><br />
+                <input
+                  type="checkbox"
+                  class="radioCheck"
+                  id="FootballId"
+                  name=""
+                />
+                <label for="FootballId">Football</label><br />
+                <input
+                  type="checkbox"
+                  class="radioCheck"
+                  id="BadmintonId"
+                  name=""
+                />
+                <label for="BadmintonId">Badminton</label>
+              </fieldset>
+              <br />
+              <br />
+              Religion
+              <select>
+                <option>Islam</option>
+                <option selected="">Christian</option>
+                <option>Protestant</option>
+                <option>Catholic</option>
+                <option>Confucius</option>
+                <option>Buddha</option>
+                <option>Hindu</option>
+                <option>Jewish</option>
+              </select>
+              <br />
+              <br />
+              Notes
+              <textarea rows="5" cols="60"> </textarea>
+              <br />
+              <br />
+              <div class="tool">
+                Your Password
+                <input
+                  type="password"
+                  placeholder="Enter Your Password"
+                  name=""
+                /><br /><br />
+                <div class="tips">
+                  <input type="submit" value="Submit" name="" />
+                  <span>Sending Input Data</span>
+                </div>
+                <button type="button" onclick="alert('do registration !')">
+                  What am i doing?
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="right">
+          <div class="top">
+            <h1>Layanan Kami</h1>
+            <img src="assets/borobudur.jpg" />
+            <p>
+              Contrary to popular belief, Lorem Ipsum is not simply random text.
+              It has roots in a piece of classical Latin literature from 45 BC,
+              making it over 2000 years old. Richard McClintock, a Latin
+              professor at Hampden-Sydney College in Virginia, looked up one of
+              the more obscure Latin words, consectetur, from a Lorem Ipsum
+              passage, and going through the cites of the word in classical
+              literature, discovered the undoubtable source. Lorem Ipsum comes
+              from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et
+              Malorum" (The Extremes of Good and Evil) by Cicero, written in 45
+              BC. This book is a treatise on the theory of ethics, very popular
+              during the Renaissance. The first line of Lorem Ipsum, "Lorem
+              ipsum dolor sit amet..", comes from a line in section 1.10.32.
+            </p>
+            <p>
+              The standard chunk of Lorem Ipsum used since the 1500s is
+              reproduced below for those interested. Sections 1.10.32 and
+              1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also
+              reproduced in their exact original form, accompanied by English
+              versions from the 1914 translation by H. Rackham.
+            </p>
+          </div>
+          <div class="bottom">
+            <div class="left-bottom">
+              <h1>Hubungi Kami</h1>
+              <p>
+                <i
+                  >Neque porro quisquam est qui dolorem ipsum quia dolor sit
+                  amet, consectetur, adipisci velit...</i
+                >
+              </p>
+            </div>
+            <div class="right-bottom">
+              <h1>Social Media</h1>
+              <a href="https://www.facebook.com/" target="_blank"
+                ><img src="assets/facebook.png"
+              /></a>
+              <a href="https://twitter.com/" target="_blank"
+                ><img src="assets/twitter.png"
+              /></a>
+              <a href="https://mail.google.com/" target="_blank"
+                ><img src="assets/gmail.png"
+              /></a>
+            </div>
+          </div>
+          <div class="bottom-2">
+            <table>
+              <caption>
+                Destination Wisata
+              </caption>
+              <thead>
+                <tr>
+                  <th>Kabupaten</th>
+                  <th>Kecamatan</th>
+                  <th>Nama Object Wisata</th>
+                  <th>Tiket Masuk</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Sleman</td>
+                  <td>Prambanan</td>
+                  <td>Candi Ijo</td>
+                  <td>Rp 20.000</td>
+                </tr>
+                <tr>
+                  <td>Bantul</td>
+                  <td>Mangunan</td>
+                  <td>Hutan Pinus</td>
+                  <td>Rp 5.000</td>
+                </tr>
+                <tr>
+                  <td rowspan="2">Gunung Kidul</td>
+                  <td>Patuk</td>
+                  <td>Embung Nglanggeran</td>
+                  <td>Rp 3.000</td>
+                </tr>
+                <tr>
+                  <td style="text-align: center;">Tepus</td>
+                  <td style="text-align: right;">Pantai Pok Tunggal</td>
+                  <td style="text-align: right;">Rp 30.000</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th colspan="3">Harga Tiket Tertinggi</th>
+                  <th>Rp 30.000</th>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+        </div>
+        <div class="center-buttom">
+          <div class="center-buttom-left">
+            <img src="assets/borobudur.jpg" />
+            <h1>Jawa Tengah</h1>
+            <p>
+              The standard chunk of Lorem Ipsum used since the 1500s is
+              reproduced below for those interested. Sections 1.10.32 and
+              1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also
+              reproduced in their exact original form, accompanied by English
+              versions from the 1914 translation by H. Rackham.
+            </p>
+          </div>
+          <div class="center-buttom-center">
+            <img src="assets/borobudur.jpg" />
+            <h1>Jawa Tengah</h1>
+            <p>
+              The standard chunk of Lorem Ipsum used since the 1500s is
+              reproduced below for those interested. Sections 1.10.32 and
+              1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also
+              reproduced in their exact original form, accompanied by English
+              versions from the 1914 translation by H. Rackham.
+            </p>
+          </div>
+
+          <div class="center-buttom-right">
+            <img src="assets/borobudur.jpg" />
+            <h1>Jawa Tengah</h1>
+            <p>
+              The standard chunk of Lorem Ipsum used since the 1500s is
+              reproduced below for those interested. Sections 1.10.32 and
+              1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also
+              reproduced in their exact original form, accompanied by English
+              versions from the 1914 translation by H. Rackham.
+            </p>
+          </div>
+        </div>
+        <div class="call-us">
+          <p>Hubungi Kami</p>
+          <a href="https://web.whatsapp.com/" target="_blank"
+            ><img src="assets/whatsapp.png"
+          /></a>
+          <a href="https://login.web.phone.com/" target="_blank">
+            <img src="assets/phone-call.png" />
+          </a>
+        </div>
+      </article>
+      <footer>
+        <p>
+          <i>Copyright</i> WEBDEV &copy; 2020 |
+          <a
+            href="https://www.pegipegi.com/jelajahi-indonesiamu/jawa/"
+            target="_blank"
+            >WISATAKU</a
+          >
+        </p>
+      </footer>
+    </div>
+  </body>
+</html>

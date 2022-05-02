@@ -1,0 +1,1 @@
+C:\Users\afinapd\AppData\Roaming\SQL Developer

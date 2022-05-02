@@ -1,0 +1,39 @@
+#destinations {
+  margin-bottom: 80px;
+}
+
+.feature-item {
+  display: inline-block;
+  margin-bottom: 60px;
+}
+
+.feature-item .left-icon img {
+  float: left;
+  margin-right: 30px;
+  height: 120px;
+  width: 120px;
+  border-radius: 10%;
+}
+
+.feature-item .right-content {
+  display: inline;
+}
+
+.feature-item .right-content h4 {
+  margin-top: 0px;
+  margin-bottom: 7px;
+  letter-spacing: 0.25px;
+  color: #97704f;
+  font-size: 19px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.feature-item .right-content a.text-button {
+  margin-top: 7px;
+  display: inline-block;
+  font-size: 13px;
+  text-transform: uppercase;
+  color: #97704f;
+  font-weight: 600;
+}

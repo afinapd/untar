@@ -1,0 +1,238 @@
+create table emp( n number, sal number );
+
+insert into emp values (1,500);
+insert into emp values (2,400 );
+
+select a.sid, a.serial#, a.username, b.used_urec, b.used_ublk
+from   v$session a,
+       v$transaction b
+where  a.saddr = b.ses_addr
+order by b.used_ublk desc;
+
+--USED_UBLK = Number of undo blocks used 
+--USED_UREC = Number of undo records used
+
+insert into emp values (3,700 );
+
+select a.sid, a.serial#, a.username, b.used_urec, b.used_ublk
+from   v$session a,
+       v$transaction b
+where  a.saddr = b.ses_addr
+order by b.used_ublk desc;
+
+commit; 
+
+--this mean end of transaction
+
+select a.sid, a.serial#, a.username, b.used_urec, b.used_ublk
+from   v$session a,
+       v$transaction b
+where  a.saddr = b.ses_addr
+order by b.used_ublk desc;
+
+===================================================================================================
+
+1- open sqlplus / as sysdba  and be sure u r in the root 
+
+2- do this query
+
+select property_value from database_properties where property_name='LOCAL_UNDO_ENABLED';
+
+--the value will be true for oracle 18c
+
+3- let us update the value to be false
+
+4- shutdown immediate;
+
+5-  startup upgrade;
+
+6- alter database local undo off;
+
+7- shutdown immediate;
+
+8- startup;
+
+9- 
+
+select property_value from database_properties where property_name='LOCAL_UNDO_ENABLED';
+
+10-- show pdbs  and choose any one 
+
+
+11--alter session set container=orclpdb;
+
+12-- create table then do uncommited trans
+
+create table test ( n number );
+
+insert into test values (1);
+----------------------------------------------------------------------------------------------------------------
+
+open another terminal
+
+1- open sqlplus / as sysdba  and be sure u r in the root 
+2- create directory in the path /u01/app/oracle/oradata/ORCL    name it pdbkh1 for example
+3- try to do this
+
+  create pluggable database pdbkh1 from orclpdb create_file_dest = '/u01/app/oracle/oradata/ORCL/pdbkh1'
+
+4- it will give error
+do this
+
+host oerr ora 65035
+-------
+
+back again to LOCAL_UNDO_ENABLED= true
+
+===========================================================================================================
+
+select * from employees;
+
+
+create table emp_copy3
+as
+select * from employees;
+
+select * from emp_copy3;
+
+drop table emp_copy3;
+
+select * from emp_copy3;
+
+
+select * from recyclebin;
+/*
+The SCN is an internal number maintained by the database management system 
+to log changes made to a database
+Whenever an application commits a transaction, the log writer process (LGWR)
+writes records from the redo log buffers in the (SGA) to the online redo logs on disk. 
+LGWR also writes the transaction’s SCN to the online redo log file. 
+*/
+
+ 
+flashback  table emp_copy3 to before drop;
+
+select * from emp_copy3;
+
+select * from recyclebin;
+--you can do this command( purge recyclebin) to make the recyclebin empty;
+---------------------------------------------------------------------------------------------------------------
+/*Using Oracle Flashback Version Query
+Use Oracle Flashback Version Query to retrieve the different versions of specific rows 
+that existed during a given time interval. 
+A row version is created whenever a COMMIT statement is executed.
+*/
+
+select salary from 
+employees
+where employee_id=107;
+
+update
+employees
+set salary=salary+100
+where employee_id=107;
+
+commit; -- thi will make new scn
+
+select salary from 
+employees
+where employee_id=107;
+
+
+
+
+select versions_starttime,versions_endtime, salary from 
+employees
+versions between scn minvalue and maxvalue
+where employee_id=107;
+
+update
+employees
+set salary=salary+100
+where employee_id=107;
+commit;
+
+select versions_starttime,versions_endtime, salary from 
+employees
+versions between scn minvalue and maxvalue
+where employee_id=107;
+
+--q: until when i can see these records ???
+--This depend on many factors
+--1-	Tablespace type (fixed or auto extend )
+--2-	The retention period  UNDO_RETENTION
+--3-	Retention Guarantee
+
+============================================================================================================
+
+show user ;
+show con_name;
+
+show parameter undo
+
+select * from DBA_TABLESPACES
+
+SELECT DBMS_METADATA.GET_DDL('TABLESPACE','UNDOTBS1') FROM dual;
+
+-- so it is   AUTOEXTEND
+--so oracle will will adjust the undo_retention automaticlly ( for active query )
+--but  flashback operations ( maybe or maybe not work )
+
+alter system set undo_retention=1;
+
+create table xyz
+(id number primary key, val number );
+
+begin
+for i in 1..500000
+loop
+insert into xyz values (i,500 );
+end loop;
+commit;
+end;
+
+select * from xyz
+order by 1;
+
+--now do this without comment
+
+update xyz
+set val=0
+where id =500000;
+
+--so this record will be in undo
+--take the code now and open new session
+/*
+
+create table xyz_copy
+(id number primary key, val number );
+
+
+--this wil insert the data from xyz to xyz_copy 
+--note that the value of id 500000 still 500 because the user did not commit
+-- exec the code and while it execute back to first session and commit
+
+begin
+for i in (select * from xyz)
+loop
+insert into xyz_copy values (i.id, i.val );
+end loop;
+commit;
+end;
+
+select * from xyz_copy
+where id=500000;
+
+-- so oracle will  adjust the undo_retention automaticlly to be more than 1s
+
+--but flashback maybe or maybe not work
+
+select versions_starttime,versions_endtime, val from 
+ xyz
+versions between scn minvalue and maxvalue
+where id=500000;
+*/
+
+commit;
+
+

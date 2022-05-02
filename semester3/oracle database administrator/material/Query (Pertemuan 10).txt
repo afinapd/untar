@@ -1,0 +1,218 @@
+SQL> show user;
+
+SQL> show con_name;
+
+
+SQL> select * from database_properties;
+--see GLOBAL_DB_NAME,DEFAULT_PERMANENT_TABLESPACE,DEFAULT_TEMP_TABLESPACE
+
+SQL> create user hrms identified by hrms;
+
+
+SQL> SELECT DBMS_METADATA.GET_DDL('USER','HRMS') FROM dual;
+--SO WE CAN SEE THAT THE USER HRMS WILL HAVE
+-- DEFAULT TABLESPACE "USERS" 
+-- TEMPORARY TABLESPACE "TEMP"
+
+SQL> CREATE TABLE HRMS.EMP ( EMP_ID NUMBER, ENAME VARCHAR2(100) );
+SQL> INSERT INTO   HRMS.EMP VALUES (1,'ford');
+SQL> INSERT INTO   HRMS.EMP VALUES (2,'sami');
+SQL> commit;
+
+
+SQL> select * from dba_tables
+where owner='HRMS'; 
+--SO THE TABLE WILL BE USERS TABLESPACE
+
+
+--tablespaces info
+SQL> desc dba_tablespaces;
+
+SQL> select TABLESPACE_NAME,BLOCK_SIZE,STATUS,CONTENTS,LOGGING,SEGMENT_SPACE_MANAGEMENt,COMPRESS_FOR
+from dba_tablespaces;
+
+SQL> select * from v$tablespace;
+
+--data_files info
+SQL> select * from dba_data_files;
+--BYTES Size of the file in bytes
+--BLOCKS Size of the file in Oracle blocks
+--MAXBYTES Maximum file size in bytes
+--MAXBLOCKS Maximum file size in blocks
+--INCREMENT_BY Number of tablespace blocks used as autoextension increment
+--USER_BYTES The size of the file available for user data.
+--USER_BLOCKS Number of blocks which can be used by the data
+--https://docs.oracle.com/database/121/REFRN/GUID-0FA17297-73ED-4B5D-B511-103993C003D3.htm#REFRN23049
+
+SQL> select * from v$datafile;
+
+--temp_files info
+SQL> select * from dba_temp_files;
+
+SQL> select * from v$tempfile;
+
+==============================================================================================================
+
+SQL> SHOW USER;
+
+SQL> SHOW CON_NAME;
+
+SQL> create tablespace t1;
+
+
+/*
+Oracle Managed Files
+When creating a tablespace, either a permanent tablespace or an undo tablespace,
+the DATAFILE clause is optional. 
+When you include the DATAFILE clause, the file name is optional. 
+If the DATAFILE clause or file name is not provided, then the following rules
+apply:
+• If the DB_CREATE_FILE_DEST initialization parameter is specified, then an Oracle
+managed data file is created in the location specified by the parameter.
+• If the DB_CREATE_FILE_DEST initialization parameter is not specified, then the
+statement creating the data file fails
+*/
+
+SQL> show parameter DB_CREATE_FILE_DEST;
+
+SQL> alter system set DB_CREATE_FILE_DEST='/u01/app/oracle/oradata/ORCL/pdbts'; 
+
+SQL> show parameter DB_CREATE_FILE_DEST;
+
+SQL> create tablespace t1;
+
+SQL> SELECT DBMS_METADATA.GET_DDL('TABLESPACE','T1') FROM dual;
+
+SQL> select TABLESPACE_NAME,BLOCK_SIZE,STATUS,CONTENTS,LOGGING,SEGMENT_SPACE_MANAGEMENt,COMPRESS_FOR
+from dba_tablespaces;
+
+SQL> select * from v$tablespace;
+
+SQL> select * from dba_data_files;
+
+SQL> create user hrms2 identified by hrms2 
+default tablespace t1;
+
+SQL> SELECT DBMS_METADATA.GET_DDL('USER','HRMS2') FROM dual;
+
+SQL> CREATE TABLE HRMS2.TEST123 ( N NUMBER );
+
+SQL> select * from dba_tables
+where owner='HRMS2'; --
+
+==============================================================================================================
+
+SQL> create user x1 identified by x1
+default tablespace ts2;
+
+SQL> grant create session to x1;
+
+SQL> grant create table to x1;
+
+SQL> grant UNLIMITED tablespace to x1;
+
+SQL> create table  x1.test ( n number) ;
+
+SQL> select * from dba_tables
+where owner='X1'
+
+SQL> DROP TABLESPACE TS2 INCLUDING CONTENTS;
+
+==============================================================================================================
+
+SQL> show user;
+
+SQL> show con_name;
+
+SQL> create tablespace t3;
+
+SQL> SELECT DBMS_METADATA.GET_DDL('TABLESPACE','T3') FROM dual;
+
+SQL> select TABLESPACE_NAME,BLOCK_SIZE,STATUS,CONTENTS,LOGGING,SEGMENT_SPACE_MANAGEMENt,COMPRESS_FOR
+from dba_tablespaces;
+
+SQL> select * from v$tablespace
+
+SQL> select * from v$datafile
+
+SQL> CREATE USER anita identified by anita
+default tablespace t3;
+
+SQL> grant create session,create table, unlimited tablespace to anita;
+
+SQL> create table anita.emp( id number, name varchar2(200));
+
+SQL> insert into anita.emp values (1,'ford');
+SQL> insert into anita.emp values (2,'sara');
+SQL> insert into anita.emp values (3,'ali');
+SQL> commit;
+
+SQL> ALTER TABLESPACE T3 READ ONLY;
+
+SQL> insert into anita.emp values (4,'DAVE');
+
+SQL> ALTER TABLESPACE T3 READ WRITE;
+
+SQL> insert into anita.emp values (4,'DAVE');
+SQL> COMMIT;
+
+--LET US REZIE THE DATAFIE
+SQL> select * from v$datafile;
+
+SQL> ALTER DATABASE DATAFILE 
+'XXXXXXXX.dbf'
+   RESIZE 200M;
+
+
+SQL> ALTER TABLESPACE T3
+    ADD DATAFILE '/u01/app/oracle/oradata/ORCL/pdbts/ORCL/T3_02.dbf' SIZE 10M;
+
+SQL> select * from v$datafile;
+
+==============================================================================================================
+
+--Moving and Renaming Online Data Files
+SQL> show user;
+SQL> show con_name;
+
+SQL> create tablespace t4
+DATAFILE '/u01/app/oracle/oradata/ORCL/pdbts/t4_01.dbf' size 5m;
+
+
+SQL> SELECT DBMS_METADATA.GET_DDL('TABLESPACE','T4') FROM dual;
+
+--NOW LET US RENAME THE  FIE t4_01.dbf TO t4_001.dbf
+
+SQL> ALTER DATABASE MOVE DATAFILE
+'/u01/app/oracle/oradata/ORCL/pdbts/t4_01.dbf'
+TO
+'/u01/app/oracle/oradata/ORCL/pdbts/t4_001.dbf';
+
+--NOW LET MOVE t4_001.dbf TO ANOTHER LOCATION
+--CREATE FOLDER TEST IN /u01/app/oracle/oradata/ORCL/pdbts/
+
+SQL> ALTER DATABASE MOVE DATAFILE
+'/u01/app/oracle/oradata/ORCL/pdbts/t4_001.dbf'
+TO
+'/u01/app/oracle/oradata/ORCL/pdbts/test/t4_001.dbf';
+
+
+/*
+please read this
+
+Queries and DML and DDL operations can be performed while the data file is being moved, for example:
+1-SELECT statements against tables and partitions
+2-Creation of tables and indexes
+3- Rebuilding of indexes
+Other notes:
+1- If objects are compressed while the data file is moved, the compression remains the same.
+2- You do not have to shut down the database or take the data file offline while you move a data file to another
+location, disk, or storage system.
+3- You can omit the TO clause only when an Oracle-managed file is used. In this case, the
+DB_CREATE_FILE_DEST initialization parameter should be set to indicate the new location.
+4-If the REUSE option is specified, the existing file is overwritten.
+note:  The REUSE keyword indicates the new file should be created even if it already exists.
+5-If the KEEP clause is specified, the old file will be kept after the move operation. The KEEP clause is not allowed
+if the source file is an Oracle-managed file.
+
+*/

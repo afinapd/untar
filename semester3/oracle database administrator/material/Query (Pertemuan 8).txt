@@ -1,0 +1,388 @@
+=============================================================================================================
+Creating PDB from seed
+----------------------
+
+Activities - Files - Other Location - Computer 
+u01/app/oracle/oradata/ORCL/pbdseed
+
+Connect to Oracle database
+
+sqlplus
+sys as sysdba
+oracle
+
+SQL>show con_name
+
+SQL>col name format a20;
+
+SQL>select con_id,name,open_mode 
+from v$containers;
+
+SQL>alter session set container=PDB$SEED;
+
+SQL>select con_id, username,DEFAULT_TABLESPACE,common 
+from cdb_users;
+
+SQL>select  username,DEFAULT_TABLESPACE,common 
+from dba_users;
+
+SQL>select con_id,file#, name from V$DATAFILE;
+
+Activities - Files - Other Location - Computer 
+u01/app/oracle/oradata/ORCL/pbdseed
+
+SQL>select * from V$TABLESPACE;
+
+SQL>alter session set container=cdb$root;
+
+--  mkdir /u01/app/oracle/oradata/ORCL/pdb1
+
+atau langsung dari SQL:
+
+SQL>!mkdir /u01/app/oracle/oradata/ORCL/pdb1
+
+SQL>CREATE PLUGGABLE DATABASE pdb1
+  ADMIN USER pdb1admin IDENTIFIED BY welcome
+  ROLES = (dba)
+  DEFAULT TABLESPACE users
+    DATAFILE '/u01/app/oracle/oradata/ORCL/pdb1/users01.dbf' SIZE 250M AUTOEXTEND ON
+  FILE_NAME_CONVERT = ('/u01/app/oracle/oradata/ORCL/pdbseed/',
+                       '/u01/app/oracle/oradata/ORCL/pdb1/');
+
+-- wait around 5 minutes
+/*
+ file_name_convert
+
+Use this clause to determine how the database generates the names of files 
+(such as data files and wallet files) for the PDB.
+*/
+
+SQL>select con_id,name,open_mode 
+from v$containers;
+
+SQL>alter session set container=pdb1; 
+
+SQL>alter pluggable database open;
+
+-- now you can see users01.dbf in /u01/app/oracle/oradata/ORCL/pdb1
+
+SQL>select con_id, username,DEFAULT_TABLESPACE,common 
+from cdb_users;
+
+---find PDB1ADMIN users; it is not a common user
+
+SQL> col username format a20;
+
+SQL>select  username,DEFAULT_TABLESPACE,common 
+from dba_users;
+
+SQL>select con_id,file#, name from V$DATAFILE;
+
+SQL>select * from V$TABLESPACE;
+
+=============================================================================================================
+
+Creating PDB from seed (DBCA)
+------------------------------
+
+Open new Terminal
+
+$ dbca
+
+Pilih Manage Pluggable Database - Next
+Pilih Create a Pluggable Database - Next
+Next
+Next
+Pluggable database name: pdb2
+Administrator user name: pdb2admin
+Administrator password: welcome
+Confirm administrator password: welcome
+Next
+Next
+Finish
+
+Wait until Finish - Close
+
+Activities - Files - Other Locations - Computer
+u01/app/oracle/oradata/ORCL/pdb2
+
+Right click - Open in Terminal
+
+sqlplus / as sysdba
+
+SQL> col name format a20;
+
+SQL> select name, open_mode from v$pdbs;
+
+=============================================================================================================
+
+Dropping pluggable using SQL
+----------------------------
+
+Activities - Files - Other Locations - Computer
+u01/app/oracle/oradata/ORCL
+
+Right click - Open in Terminal
+
+sqlplus / as sysdba
+
+SQL> col name format a20;
+
+SQL> select name, open_mode from v$pdbs;
+
+SQL> show con_name;
+
+SQL> drop pluggable database pdb2 including datafiles;
+
+error
+
+SQL> alter pluggable database pdb2 close;
+
+SQL> drop pluggable database pdb2 including datafiles;
+
+Activities - Files - Other Locations - Computer
+u01/app/oracle/oradata/ORCL/pdb2
+
+the directory is empty now
+right click directory pdb2 - Delete Permanently
+
+---to drop: should be in root and the pluggable database must be closed
+
+=============================================================================================================
+
+Dropping pluggable using DBCA
+-----------------------------
+
+Activities - Files - Other Locations - Computer
+u01/app/oracle/oradata/ORCL
+
+Right click - Open in Terminal
+
+$ dbca
+
+Manage Pluggable Database - Next
+Delete a Pluggable Database  - Next
+Next
+Select PDB1 - Next
+Don't click Finish - Click Cancel
+
+Steps above only want to shohow to delete a pluggable database using DBCA
+
+=============================================================================================================
+
+Cloning PDBs
+------------
+
+SQL> show con_name
+
+SQL> col name format a20;
+
+SQL> select con_id,name,open_mode
+from v$pdbs;
+
+SQL> alter pluggable database all open;
+
+SQL> select con_id,name,open_mode
+from v$pdbs;
+
+SQL> alter session set container=ORCLPDB;
+
+SQL> show con_name;
+
+SQL> select username,DEFAULT_TABLESPACE,common 
+from dba_users;
+
+SQL> select con_id,file#, name from V$DATAFILE;
+
+SQL> select  * from V$TABLESPACE;
+
+
+--NOW LET US CLONE ORCLPDB TO pdb5
+--go to vbox
+--login as oracle user
+--  mkdir /u01/app/oracle/oradata/ORCL/pdb5
+
+SQL> !mkdir /u01/app/oracle/oradata/ORCL/pdb5
+
+SQL> alter session set container=cdb$root;
+
+SQL> show con_name;
+
+SQL> CREATE PLUGGABLE DATABASE pdb5 from orclpdb
+FILE_NAME_CONVERT = ('/u01/app/oracle/oradata/ORCL/orclpdb/',
+                       '/u01/app/oracle/oradata/ORCL/pdb5/');
+
+/*
+you can do this if you need oracle managed files to names the files
+CREATE PLUGGABLE DATABASE pdb5 from orclpdb
+create_file_dest '/u01/app/oracle/oradata/ORCL/pdb5'
+*/
+
+SQL> select con_id,name,open_mode 
+from v$pdbs;
+
+SQL> alter session set container=PDB5; 
+
+SQL> alter pluggable database open;
+
+SQL> select  username,DEFAULT_TABLESPACE,common 
+from dba_users;
+
+SQL> select con_id,file#, name from V$DATAFILE;
+
+SQL> select * from V$TABLESPACE;
+
+=============================================================================================================
+
+Unplugging and plugging in PDBs
+-------------------------------
+
+Activities - Files - Other Locations - Computer
+u01/app/oracle/oradata/ORCL/
+
+SQL> show con_name
+
+SQL> alter pluggable database all open;
+
+SQL> col name format a20;
+
+SQL> select con_id, name, open_mode 
+from v$pdbs;
+
+SQL> alter session set container=pdb5;
+
+SQL> alter session set container=cdb$root;
+
+--we need to unplug pdb5
+--step 1
+SQL> alter pluggable database pdb5 close immediate;
+
+SQL> select con_id, name, open_mode 
+from v$pdbs;
+--step 2
+SQL> alter pluggable database pdb5 unplug into '/u01/app/oracle/oradata/pdb5.xml';
+
+Activities - Files - Other Locations - Computer
+u01/app/oracle/oradata/pdb5.xml -- right click - Open with Text Editor
+
+SQL> select con_id, name, open_mode 
+from v$pdbs;
+
+--step3
+SQL> drop pluggable database pdb5 keep datafiles; --you should keep it.
+
+SQL> select con_id, name, open_mode 
+from v$pdbs;
+
+--step 4 -- but this not work in 18c
+/*
+DECLARE
+  l_result BOOLEAN;
+BEGIN
+  l_result := DBMS_PDB.check_plug_compatibility(
+                pdb_descr_file => '/u01/app/oracle/oradata/pdb5.xml',
+                pdb_name => 'PDB5');
+
+  IF l_result THEN
+    DBMS_OUTPUT.PUT_LINE('compatible');
+  ELSE
+    DBMS_OUTPUT.PUT_LINE('incompatible');
+  END IF;
+END;
+
+*/
+
+
+SQL> create pluggable database pdbtest
+using '/u01/app/oracle/oradata/pdb5.xml'
+FILE_NAME_CONVERT=('/u01/app/oracle/oradata/ORCL/pdb5/',
+                  '/u01/app/oracle/oradata/ORCL/pdbtest/');
+
+SQL> select con_id, name, open_mode 
+from v$pdbs;
+
+SQL> alter session set container=pdbtest;
+
+SQL> alter pluggable database open;
+
+SQL> select con_id, file#, name from V$DATAFILE;
+
+=============================================================================================================
+
+Unplugging and plugging in PDBs (continue)
+------------------------------------------
+
+SQL> show con_name;
+
+SQL> alter pluggable database all open;
+
+SQL> select con_id, name, open_mode 
+from v$pdbs;
+
+SQL> alter session set container=pdbtest;
+
+SQL> select * from hr.employees; -- table or view does not exist
+
+SQL> alter session set container=cdb$root;
+
+--we need to unplug pdbtest
+--step 1
+SQL> alter pluggable database pdbtest close immediate;
+
+SQL> select con_id, name, open_mode 
+from v$pdbs;
+--step 2
+SQL> alter pluggable database pdbtest  unplug into '/u01/app/oracle/oradata/pdbtest.xml';
+
+SQL> select con_id, name, open_mode 
+from v$pdbs;
+
+--step3
+SQL> drop pluggable database pdbtest keep datafiles; --you should keep it.
+
+SQL> select con_id, name, open_mode 
+from v$pdbs;
+
+--step 4 -- but this not work in 18c/21c
+/*
+DECLARE
+  l_result BOOLEAN;
+BEGIN
+  l_result := DBMS_PDB.check_plug_compatibility(
+                pdb_descr_file => '/u01/app/oracle/oradata/pdbtest.xml',
+                pdb_name => 'pdbtest');
+
+  IF l_result THEN
+    DBMS_OUTPUT.PUT_LINE('compatible');
+  ELSE
+    DBMS_OUTPUT.PUT_LINE('incompatible');
+  END IF;
+END;
+
+*/
+
+--step 5
+SQL> create pluggable database pdbtest1
+using '/u01/app/oracle/oradata/pdbtest.xml'
+NOCOPY TEMPFILE REUSE;
+
+--FILE_NAME_CONVERT=('/u01/app/oracle/oradata/ORCL/pdb5/',
+  --                '/u01/app/oracle/oradata/ORCL/pdbtest/')
+
+Activities - Files - Other Locations - Computer
+u01/app/oracle/oradata/ORCL/
+
+There is no pdbtest1
+
+
+SQL> select con_id, name, open_mode 
+from v$pdbs;
+
+SQL> alter session set container=pdbtest1;
+
+SQL> alter pluggable database open;
+
+SQL> select con_id,file#, name from V$DATAFILE;
+
+-- Not recommended
+

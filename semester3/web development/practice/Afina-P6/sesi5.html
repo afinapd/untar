@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FORM</title>
+    <link rel="stylesheet" type="text/css" href="sesi5.css" />
+  </head>
+  <body>
+    <form>
+      <div class="item-form">
+        <div class="form1">
+          <label for="FirstName">First Name</label>
+          <label for="FullName">Full Name</label>
+          <label for="Address">Address</label>
+        </div>
+        <div class="form2">
+          <input
+            type="text"
+            class="inputText"
+            id="FirstName"
+            placeholder="Enter Your First Name"
+            name=""
+          /><br />
+          <input
+            type="text"
+            class="inputText"
+            id="FullName"
+            placeholder="Enter Your Full Name"
+            name=""
+          /><br />
+          <input
+            type="text"
+            class="inputText"
+            id="Address"
+            placeholder="Enter Your Address"
+            name=""
+          />
+        </div>
+      </div>
+      <br />
+      <br />
+      <fieldset>
+        <legend>Gender</legend>
+        <input
+          type="radio"
+          class="radioCheck"
+          id="MaleId"
+          name="gender"
+          checked
+        />
+        <label for="MaleId">Male</label><br />
+        <input type="radio" class="radioCheck" id="FemaleId" name="gender" />
+        <label for="FemaleId">Female</label>
+      </fieldset>
+      <br />
+      <br />
+      <fieldset>
+        <legend>Favorite Sports</legend>
+        <input type="checkbox" class="radioCheck" id="VolleyballId" name="" />
+        <label for="VolleyballId">Volleyball</label><br />
+        <input type="checkbox" class="radioCheck" id="FootballId" name="" />
+        <label for="FootballId">Football</label><br />
+        <input type="checkbox" class="radioCheck" id="BadmintonId" name="" />
+        <label for="BadmintonId">Badminton</label>
+      </fieldset>
+      <br />
+      <br />
+      Religion
+      <select>
+        <option>Islam</option>
+        <option selected="">Christian</option>
+        <option>Protestant</option>
+        <option>Catholic</option>
+        <option>Confucius</option>
+        <option>Buddha</option>
+        <option>Hindu</option>
+        <option>Jewish</option>
+      </select>
+      <br />
+      <br />
+      Notes
+      <textarea rows="5" cols="60"> </textarea>
+      <br />
+      <br />
+      <div class="tool">
+        Your Password
+        <input type="password" placeholder="Enter Your Password" name="" />
+        <div class="tips">
+          <input type="submit" value="Submit" name="" />
+          <span>Sending Input Data</span>
+        </div>
+        <button type="button" onclick="alert('do registration !')">
+          What am i doing?
+        </button>
+      </div>
+    </form>
+  </body>
+</html>
